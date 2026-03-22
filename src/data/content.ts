@@ -239,8 +239,8 @@ export const siteContent = {
     ],
     idealFor:
       "Best for business owners who want a clear, honest assessment of where AI fits — and a practical plan for moving forward.",
-    primaryCTA:   { label: "Book the Strategy Intensive",  href: BOOKING_URL },
-    secondaryCTA: { label: "Book a Discovery Call First",  href: BOOKING_URL },
+    primaryCTA:   { label: "Apply for the Strategy Intensive", href: "/apply"    },
+    secondaryCTA: { label: "Book a Discovery Call First",     href: BOOKING_URL },
   },
 
   // ── Why Start Here ────────────────────────────────────────────────────────
