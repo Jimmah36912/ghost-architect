@@ -1,26 +1,524 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   Ghost Architect — Design Token System
+   ─────────────────────────────────────────────────────────────────────────
+   All visual tokens live here as CSS custom properties.
+   • Edit :root values to change the visual system globally
+   • The design lab (/design-lab) can swap these at runtime via JavaScript
+   • @theme inline exposes them as Tailwind utility classes
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Brand Colors ─────────────────────────────────────────────────────── */
+  --ga-bg:                   #F3F1EC;
+  --ga-surface:              #FCFBF8;
+  --ga-dark:                 #12171D;
+  --ga-dark-secondary:       #1B232C;
+  --ga-text:                 #202833;
+  --ga-text-muted:           #66605A;
+  --ga-text-on-dark:         #E2E8F0;
+  --ga-text-muted-on-dark:   #94A3B8;
+  --ga-accent:               #7A5C3A;
+  --ga-accent-dark:          #4B3927;
+  --ga-accent-light:         #EDE8E2;
+  --ga-border:               #D4CFC9;
+  --ga-border-dark:          rgba(255, 255, 255, 0.10);
+
+  /* ── Gradients ────────────────────────────────────────────────────────── */
+  --ga-gradient-hero: radial-gradient(
+    ellipse at 80% 10%,
+    rgba(122, 92, 58, 0.22) 0%,
+    transparent 60%
+  );
+  --ga-gradient-dark: linear-gradient(135deg, #12171D 0%, #1B232C 100%);
+
+  /* ── Blueprint Grid Texture (Ghost Architect motif) ──────────────────── */
+  --ga-grid-pattern:
+    repeating-linear-gradient(
+      rgba(122, 92, 58, 0.045) 0px,
+      rgba(122, 92, 58, 0.045) 1px,
+      transparent 1px,
+      transparent 64px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(122, 92, 58, 0.045) 0px,
+      rgba(122, 92, 58, 0.045) 1px,
+      transparent 1px,
+      transparent 64px
+    );
+
+  /* ── Shadows ──────────────────────────────────────────────────────────── */
+  --ga-shadow-card:       0 1px 3px rgba(0,0,0,0.07), 0 1px 2px -1px rgba(0,0,0,0.05);
+  --ga-shadow-card-hover: 0 8px 24px rgba(0,0,0,0.10);
+  --ga-shadow-card-accent: 0 0 0 1px rgba(122,92,58,0.18);
+  --ga-shadow-card-dark:  0 0 0 1px rgba(255,255,255,0.07);
+
+  /* ── Radii ────────────────────────────────────────────────────────────── */
+  --ga-radius-sm:  4px;
+  --ga-radius-md:  8px;
+  --ga-radius-lg:  12px;
+  --ga-radius-xl:  16px;
+  --ga-radius-2xl: 24px;
+
+  /* ── Spacing / Layout ─────────────────────────────────────────────────── */
+  --ga-section-py:     5rem;
+  --ga-section-py-lg:  7rem;
+  --ga-container-max:  72rem;     /* 1152px */
+  --ga-container-pad:  1.5rem;
+
+  /* ── Typography ───────────────────────────────────────────────────────── */
+  --ga-font-size-hero:    clamp(2.25rem, 5vw, 3.75rem);
+  --ga-font-size-section: clamp(1.75rem, 3vw, 2.25rem);
+  --ga-line-height-tight: 1.2;
+  --ga-line-height-snug:  1.35;
+  --ga-line-height-body:  1.7;
+
+  /* ── Transitions ──────────────────────────────────────────────────────── */
+  --ga-transition:        150ms ease;
+  --ga-transition-medium: 250ms ease;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tailwind v4 Theme Registration
+   ─────────────────────────────────────────────────────────────────────────
+   Registers CSS vars as Tailwind utility classes.
+   bg-ga-accent, text-ga-dark, border-ga-border, etc.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ga-bg:              var(--ga-bg);
+  --color-ga-surface:         var(--ga-surface);
+  --color-ga-dark:            var(--ga-dark);
+  --color-ga-dark-secondary:  var(--ga-dark-secondary);
+  --color-ga-text:            var(--ga-text);
+  --color-ga-text-muted:      var(--ga-text-muted);
+  --color-ga-accent:          var(--ga-accent);
+  --color-ga-accent-dark:     var(--ga-accent-dark);
+  --color-ga-accent-light:    var(--ga-accent-light);
+  --color-ga-border:          var(--ga-border);
+  --font-sans:                var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ═══════════════════════════════════════════════════════════════════════════
+   Base Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ga-bg);
+  color: var(--ga-text);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: var(--ga-line-height-body);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ga-accent);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Layout Utilities
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section-container {
+  max-width: var(--ga-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--ga-container-pad);
+  padding-right: var(--ga-container-pad);
+}
+
+.section-py {
+  padding-top: var(--ga-section-py);
+  padding-bottom: var(--ga-section-py);
+}
+
+.section-py-lg {
+  padding-top: var(--ga-section-py-lg);
+  padding-bottom: var(--ga-section-py-lg);
+}
+
+/* ── Section Tones ────────────────────────────────────────────────────────── */
+
+.tone-light {
+  background-color: var(--ga-bg);
+  color: var(--ga-text);
+}
+
+.tone-white {
+  background-color: var(--ga-surface);
+  color: var(--ga-text);
+}
+
+.tone-tinted {
+  background-color: var(--ga-accent-light);
+  color: var(--ga-text);
+}
+
+.tone-dark {
+  background-color: var(--ga-dark);
+  background-image: var(--ga-grid-pattern);
+  color: #FFFFFF;
+}
+
+.tone-dark-secondary {
+  background-color: var(--ga-dark-secondary);
+  background-image: var(--ga-grid-pattern);
+  color: #FFFFFF;
+}
+
+/* ── Ghost Architect Visual Motifs ────────────────────────────────────────── */
+
+.accent-line {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background-color: var(--ga-accent);
+  border-radius: 9999px;
+  margin-bottom: 1.25rem;
+}
+
+.accent-line-centered {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background-color: var(--ga-accent);
+  border-radius: 9999px;
+  margin: 0 auto 1.25rem;
+}
+
+/* ── Card Variants ────────────────────────────────────────────────────────── */
+
+.card-default {
+  background-color: var(--ga-surface);
+  border-radius: var(--ga-radius-lg);
+  box-shadow: var(--ga-shadow-card);
+  padding: 1.5rem;
+  transition: box-shadow var(--ga-transition-medium);
+}
+
+.card-default:hover {
+  box-shadow: var(--ga-shadow-card-hover);
+}
+
+.card-outlined {
+  background-color: transparent;
+  border: 1px solid var(--ga-border);
+  border-radius: var(--ga-radius-lg);
+  padding: 1.5rem;
+  transition: border-color var(--ga-transition-medium), background-color var(--ga-transition-medium);
+}
+
+.card-outlined:hover {
+  border-color: var(--ga-accent);
+  background-color: var(--ga-accent-light);
+}
+
+.card-elevated {
+  background-color: var(--ga-surface);
+  border-radius: var(--ga-radius-lg);
+  box-shadow: var(--ga-shadow-card-hover);
+  padding: 1.5rem;
+}
+
+.card-tinted {
+  background-color: var(--ga-accent-light);
+  border-radius: var(--ga-radius-lg);
+  padding: 1.5rem;
+}
+
+.card-dark {
+  background-color: var(--ga-dark-secondary);
+  border: 1px solid var(--ga-border-dark);
+  border-radius: var(--ga-radius-lg);
+  padding: 1.5rem;
+  color: var(--ga-text-on-dark);
+}
+
+/* ── Offer Card (dark-glass with radial highlight + hover glow) ───────────── */
+
+.offer-card-dark {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(122,92,58,0.35);
+  box-shadow: 0 0 0 1px rgba(122,92,58,0.10), 0 8px 32px rgba(0,0,0,0.3);
+  transition: border-color var(--ga-transition-medium), box-shadow var(--ga-transition-medium);
+}
+
+.offer-card-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.offer-card-dark:hover {
+  border-color: rgba(122,92,58,0.55);
+  box-shadow: 0 0 0 1px rgba(122,92,58,0.20), 0 8px 40px rgba(0,0,0,0.4), 0 0 24px rgba(122,92,58,0.10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-card-dark { transition: none; }
+}
+
+/* ── Chasing Border Trace Effect ──────────────────────────────────────────── */
+/*
+ * Technique: conic-gradient angle is registered as a CSS custom property so
+ * @keyframes can interpolate it. The ::before pseudo covers the card at inset:0
+ * and is masked to only the 1px padding ring via mask-composite:exclude.
+ * The gradient angle spins; the element stays stationary — so the ring stays
+ * perfectly aligned with the card's rectangular border-radius at all times.
+ * Card interior is never touched: transparent bg cards show through naturally,
+ * glass-surface dark cards keep their rgba(255,255,255,0.05) surface intact.
+ */
+
+@property --ga-trace-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes ga-trace-spin {
+  to { --ga-trace-angle: 360deg; }
+}
+
+.card-traced {
+  position: relative;
+  isolation: isolate;
+}
+
+.card-traced::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;                         /* defines ring width */
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;          /* Safari */
+  pointer-events: none;
+  z-index: -1;
+  animation: ga-trace-spin 6s linear infinite;
+}
+
+/* Light-surface outlined cards — restrained warm bronze highlight */
+.card-traced--light::before {
+  background: conic-gradient(
+    from var(--ga-trace-angle),
+    rgba(122,92,58,0.14) 0deg,
+    rgba(122,92,58,0.14) 320deg,
+    rgba(122,92,58,0.50) 340deg,
+    rgba(185,200,215,0.90) 350deg,      /* pale steel-blue peak */
+    rgba(122,92,58,0.50) 360deg
+  );
+}
+
+/* Dark-surface offer card — stronger base border + warm bronze-cream peak */
+.card-traced--dark::before {
+  background: conic-gradient(
+    from var(--ga-trace-angle),
+    rgba(122,92,58,0.40) 0deg,
+    rgba(122,92,58,0.40) 310deg,
+    rgba(122,92,58,0.80) 335deg,
+    rgba(210,220,228,0.85) 350deg,      /* cool steel-white peak */
+    rgba(122,92,58,0.80) 360deg
+  );
+  animation-duration: 5s;
+}
+
+/* ── Dark-section surface card classes (Before/After/Trust) ──────────────── */
+/* Defines border + bg via CSS so .card-traced can override border-color */
+
+.before-card-dark {
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.after-card-dark {
+  background-color: rgba(122,92,58,0.12);
+  border: 1px solid rgba(122,92,58,0.25);
+}
+
+.trust-point-card {
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* Static CSS border replaced by pseudo ring — set to transparent */
+.card-outlined.card-traced   { border-color: transparent; }
+.offer-card-dark.card-traced { border-color: transparent; }
+.after-card-dark.card-traced { border-color: transparent; }
+.trust-point-card.card-traced { border-color: transparent; }
+
+/* Mobile: degrade to very slow drift */
+@media (max-width: 767px) {
+  .card-traced::before { animation-duration: 12s; }
+}
+
+/* Reduced motion: freeze at 45deg — static highlight stays as decorative accent */
+@media (prefers-reduced-motion: reduce) {
+  .card-traced::before {
+    animation: none;
+    --ga-trace-angle: 45deg;
+  }
+}
+
+/* ── Section-Level Traced Border ─────────────────────────────────────────── */
+/*
+ * Applied to full-width dark sections (BeforeAfter, StrategyIntensive, Trust).
+ * Uses ::after (overlay) so the ring paints on top of the opaque section
+ * background — z-index: -1 would be hidden behind it. pointer-events: none
+ * ensures the ring never blocks clicks or focus. 20s per revolution is slow
+ * enough to read as architectural signal, not a distraction.
+ */
+
+.section-traced {
+  position: relative;
+}
+
+.section-traced::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  z-index: 5;
+  animation: ga-trace-spin 20s linear infinite;
+  background: conic-gradient(
+    from var(--ga-trace-angle),
+    rgba(122,92,58,0.18) 0deg,
+    rgba(122,92,58,0.18) 315deg,
+    rgba(122,92,58,0.65) 338deg,
+    rgba(210,220,228,0.75) 350deg,      /* cool steel-white peak */
+    rgba(122,92,58,0.65) 360deg
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-traced::after {
+    animation: none;
+    --ga-trace-angle: 45deg;
+  }
+}
+
+/* ── Process Section — Numeral Sequence Animation ─────────────────────────── */
+
+.process-numeral {
+  transition: color 350ms ease, text-shadow 350ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-numeral { transition: none; }
+}
+
+/* ── Button Variants ──────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: var(--ga-radius-lg);
+  transition: all var(--ga-transition-medium);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-sm  { padding: 0.5rem 1rem;    font-size: 0.875rem; }
+.btn-md  { padding: 0.75rem 1.5rem; font-size: 0.9375rem; }
+.btn-lg  { padding: 1rem 2rem;      font-size: 1rem; }
+
+.btn-primary {
+  background-color: var(--ga-accent);
+  color: #FFFFFF;
+}
+.btn-primary:hover {
+  background-color: var(--ga-accent-dark);
+  box-shadow: 0 0 0 3px rgba(122,92,58,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-primary-dark {
+  background-color: #FFFFFF;
+  color: var(--ga-dark);
+}
+.btn-primary-dark:hover {
+  background-color: var(--ga-accent-light);
+  box-shadow: 0 4px 20px rgba(255,255,255,0.10);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--ga-accent);
+  border: 1.5px solid var(--ga-accent);
+}
+.btn-secondary:hover { background-color: var(--ga-accent-light); }
+
+.btn-secondary-dark {
+  background-color: rgba(255,255,255,0.04);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255,255,255,0.55);
+}
+.btn-secondary-dark:hover {
+  border-color: rgba(255,255,255,0.75);
+  background-color: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--ga-accent);
+  padding-left: 0;
+  padding-right: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn-ghost:hover { opacity: 0.75; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
+
+/* ── Process Section Numerals ─────────────────────────────────────────────── */
+/*
+ * Smooth transition for the viewport-triggered sequence in ProcessSection.tsx.
+ * The JS toggles color + text-shadow inline; CSS handles the easing so the
+ * glow ramps up and fades gracefully rather than snapping on/off instantly.
+ */
+.process-numeral {
+  transition: color 280ms ease, text-shadow 280ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-numeral { transition: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Design Lab Utilities (only used on /design-lab route)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.lab-section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ga-text-muted);
+  margin-bottom: 0.75rem;
 }
