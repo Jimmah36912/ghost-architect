@@ -371,7 +371,7 @@ export const siteContent = {
     ],
     creditLine:
       "If you move forward with the Strategy Intensive, your audit fee is credited toward it.",
-    cta: { label: "Book the Bottleneck Audit", href: BOOKING_URL },
+    cta: { label: "Start the $97 Bottleneck Audit", href: "/audit" },
   },
 
   // ── Final CTA ─────────────────────────────────────────────────────────────
