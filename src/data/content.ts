@@ -11,14 +11,14 @@ export const siteContent = {
 
   // ── Metadata ─────────────────────────────────────────────────────────────
   meta: {
-    title: "Practical AI Consulting for Small Businesses | Ghost Architect",
+    title: "Practical AI Consulting for Small Businesses | Jimmy Long",
     description:
       "Practical AI consulting for owner-led businesses that want less chaos, better follow-up, smoother operations, and a clear path for using AI without unnecessary complexity.",
   },
 
   // ── Navigation ────────────────────────────────────────────────────────────
   nav: {
-    brand: "Ghost Architect",
+    brand: "Jimmy Long",
     links: [
       { label: "How It Works", href: "#process" },
       { label: "The Offer",    href: "#offer"   },
@@ -28,7 +28,7 @@ export const siteContent = {
 
   // ── Hero ──────────────────────────────────────────────────────────────────
   hero: {
-    eyebrow:     "Ghost Architect",
+    eyebrow:     "",
     headline:    "Practical AI Support for Businesses That Need Less Chaos and More Capacity",
     subheadline:
       "You do not need more noise, more tools, or more guesswork. You need clearer priorities, smoother follow-up, and practical AI support that helps the business run better.",
@@ -395,7 +395,7 @@ export const siteContent = {
 
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
-    brand:   "Ghost Architect",
+    brand:   "Jimmy Long",
     tagline: "The Silent Infrastructure",
     flavor:  "I Speak Fluent Latency",
     email:   "jimmy@jimmy-long.com",

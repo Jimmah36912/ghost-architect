@@ -131,7 +131,6 @@ export default function Footer() {
           <p
             className="text-xs font-mono"
             style={{ color: "rgba(122,92,58,0.4)" }}
-            title="Ghost Architect"
           >
             {footer.flavor}
           </p>

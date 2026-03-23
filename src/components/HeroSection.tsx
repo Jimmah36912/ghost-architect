@@ -36,9 +36,11 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
         >
           {/* Left: Copy */}
           <div className={showImage ? "order-2 md:order-1" : ""}>
-            <p className="text-xs font-bold uppercase tracking-widest text-ga-accent mb-5">
-              {hero.eyebrow}
-            </p>
+            {hero.eyebrow && (
+              <p className="text-xs font-bold uppercase tracking-widest text-ga-accent mb-5">
+                {hero.eyebrow}
+              </p>
+            )}
 
             <h1
               className="font-bold text-white leading-tight mb-6"
