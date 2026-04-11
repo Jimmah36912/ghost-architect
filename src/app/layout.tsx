@@ -9,22 +9,22 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Practical AI Consulting for Small Businesses | Jimmy Long",
+  title: "Revenue Recovery and Client Flow Consulting | Jimmy Long",
   description:
-    "Practical AI consulting for owner-led businesses that want less chaos, better follow-up, smoother operations, and a clear path for using AI without unnecessary complexity.",
+    "Jimmy Long helps small businesses recover revenue by fixing client flow, follow-up, and operational infrastructure — without adding complexity.",
   openGraph: {
-    title: "Practical AI Consulting for Small Businesses | Jimmy Long",
+    title: "Revenue Recovery and Client Flow Consulting | Jimmy Long",
     description:
-      "Practical AI consulting for owner-led businesses that want less chaos, better follow-up, smoother operations, and a clear path for using AI without unnecessary complexity.",
+      "Jimmy Long helps small businesses recover revenue by fixing client flow, follow-up, and operational infrastructure — without adding complexity.",
     type: "website",
     locale: "en_US",
     siteName: "Jimmy Long",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Practical AI Consulting for Small Businesses | Jimmy Long",
+    title: "Revenue Recovery and Client Flow Consulting | Jimmy Long",
     description:
-      "Practical AI consulting for owner-led businesses that want less chaos, better follow-up, smoother operations, and a clear path for using AI without unnecessary complexity.",
+      "Jimmy Long helps small businesses recover revenue by fixing client flow, follow-up, and operational infrastructure — without adding complexity.",
   },
   robots: {
     index: true,

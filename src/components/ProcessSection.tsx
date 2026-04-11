@@ -89,7 +89,7 @@ export default function ProcessSection() {
         {/* Desktop: three-row blueprint layout */}
         <div className="hidden md:block mt-16">
           {/* Row 1: Ghost numerals */}
-          <div className="grid grid-cols-4 gap-8 mb-2">
+          <div className="grid grid-cols-5 gap-8 mb-2">
             {process.steps.map((step, i) => (
               <div key={step.number} className="flex justify-center">
                 <span
@@ -104,10 +104,10 @@ export default function ProcessSection() {
           </div>
 
           {/* Row 2: Dashed connector line + dots */}
-          <div className="relative grid grid-cols-4 gap-8 my-3">
+          <div className="relative grid grid-cols-5 gap-8 my-3">
             {/* Full-width dashed connector behind dots */}
             <div
-              className="absolute top-1/2 left-[12.5%] right-[12.5%] -translate-y-1/2 h-px"
+              className="absolute top-1/2 left-[10%] right-[10%] -translate-y-1/2 h-px"
               style={{
                 backgroundImage:
                   "repeating-linear-gradient(to right, var(--ga-border) 0, var(--ga-border) 6px, transparent 6px, transparent 14px)",
@@ -129,7 +129,7 @@ export default function ProcessSection() {
           </div>
 
           {/* Row 3: Title + body */}
-          <div className="grid grid-cols-4 gap-8 mt-5">
+          <div className="grid grid-cols-5 gap-8 mt-5">
             {process.steps.map((step, i) => (
               <div key={step.number} className="text-center">
                 <h3

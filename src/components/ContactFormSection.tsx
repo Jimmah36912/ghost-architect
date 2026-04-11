@@ -141,7 +141,7 @@ export default function ContactFormSection() {
                   name="message"
                   rows={4}
                   required
-                  placeholder="Describe what is breaking down, taking too much time, or where you feel the most pressure..."
+                  placeholder="Describe where revenue is leaking, where follow-up breaks, or where operations feel strained."
                   className="w-full px-4 py-3 rounded-lg text-ga-text text-sm resize-none"
                   style={{
                     backgroundColor: "var(--ga-surface)",

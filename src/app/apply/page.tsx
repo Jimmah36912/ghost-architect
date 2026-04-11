@@ -103,15 +103,15 @@ export default function ApplyPage() {
                   lineHeight: "var(--ga-line-height-snug)",
                 }}
               >
-                Apply for an AI Strategy Call
+                Apply for the Revenue Recovery Intensive
               </h1>
               <p
                 className="text-lg leading-relaxed"
                 style={{ color: "rgba(226,232,240,0.70)" }}
               >
-                Tell me a bit about your business, your current challenges, and how
-                you&rsquo;re using AI today. This helps me understand fit before
-                recommending a next step.
+                Tell me a bit about your business, where revenue is slipping through
+                the cracks, and what you have already tried. This helps me understand
+                fit before we meet.
               </p>
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function ApplyPage() {
                         className={`${labelClass} text-ga-text mb-3`}
                         style={{ color: "var(--ga-text)" }}
                       >
-                        Have you used OpenAI or any AI platform in the past?{" "}
+                        Have you tried using AI tools, automation, or software to improve your business operations?{" "}
                         <Required />
                       </legend>
                       <div className="flex gap-6">
@@ -275,14 +275,13 @@ export default function ApplyPage() {
                         className={`${labelClass} text-ga-text mb-1`}
                         style={{ color: "var(--ga-text)" }}
                       >
-                        On a scale of 1–5, how would you rate your knowledge using
-                        AI? <Required />
+                        How comfortable are you with business software and technology tools in general? <Required />
                       </legend>
                       <p
                         className="text-xs mb-3"
                         style={{ color: "var(--ga-text-muted)" }}
                       >
-                        1 = Newbie &nbsp;·&nbsp; 5 = Use it daily
+                        1 = Not comfortable &nbsp;·&nbsp; 5 = Use tools confidently daily
                       </p>
                       <div className="flex gap-5">
                         {([1, 2, 3, 4, 5] as const).map((n) => (
@@ -475,8 +474,7 @@ export default function ApplyPage() {
                         className={labelClass}
                         style={{ color: "var(--ga-text-muted)" }}
                       >
-                        What are you hoping AI can help improve in your business
-                        right now? <Required />
+                        Where do you believe revenue is slipping through the cracks in your business right now? <Required />
                       </label>
                       <textarea
                         id="apply-goals"

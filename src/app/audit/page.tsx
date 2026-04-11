@@ -100,7 +100,7 @@ export default function AuditPage() {
             className="font-bold text-white mb-4 leading-tight"
             style={{ fontSize: "var(--ga-font-size-section)" }}
           >
-            Get the $97 Bottleneck Audit
+            Get the $97 Revenue Leak Audit
           </h1>
           <p className="text-lg leading-relaxed" style={{ color: "rgba(226,232,240,0.70)" }}>
             Answer a few quick questions so I can review the right parts of your business before the
@@ -135,7 +135,7 @@ export default function AuditPage() {
               </div>
               <h2 className="font-bold text-ga-text text-xl mb-3">Application received.</h2>
               <p className="text-ga-text-muted leading-relaxed mb-8">
-                To finalize your $97 Bottleneck Audit, continue to secure payment below.
+                To finalize your $97 Revenue Leak Audit, continue to secure payment below.
               </p>
               <a
                 href={STRIPE_PAYMENT_URL}
@@ -274,7 +274,7 @@ export default function AuditPage() {
                 {/* Biggest bottleneck */}
                 <div>
                   <label className={labelClass} htmlFor="audit-bottleneck">
-                    What is the biggest bottleneck in your marketing or sales process right now?
+                    Where is the biggest revenue leak in your business right now?
                   </label>
                   <textarea
                     id="audit-bottleneck"
