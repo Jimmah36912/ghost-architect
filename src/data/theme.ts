@@ -19,19 +19,19 @@ export const theme = {
    * Mirror of the :root CSS custom properties in globals.css.
    */
   colors: {
-    bg:                "#F3F1EC",
-    surface:           "#FCFBF8",
-    dark:              "#12171D",
-    darkSecondary:     "#1B232C",
-    text:              "#202833",
-    textMuted:         "#66605A",
-    textOnDark:        "#E2E8F0",
+    bg:                "#0B1120",
+    surface:           "#1A1F2B",
+    dark:              "#0B1120",
+    darkSecondary:     "#131923",
+    text:              "#F8FAFC",
+    textMuted:         "#94A3B8",
+    textOnDark:        "#F8FAFC",
     textMutedOnDark:   "#94A3B8",
-    accent:            "#7A5C3A",
-    accentDark:        "#4B3927",
-    accentLight:       "#EDE8E2",
-    border:            "#D4CFC9",
-    borderDark:        "rgba(255,255,255,0.10)",
+    accent:            "#F59E0B",
+    accentDark:        "#D97706",
+    accentLight:       "#1F6F78",
+    border:            "rgba(255,255,255,0.10)",
+    borderDark:        "rgba(255,255,255,0.08)",
   },
 
   /**
@@ -55,17 +55,17 @@ export const theme = {
    * Pre-built gradient definitions (referenced by CSS vars).
    */
   gradients: {
-    heroRadial:  "radial-gradient(ellipse at 80% 10%, rgba(122,92,58,0.18) 0%, transparent 60%)",
-    darkSection: "linear-gradient(135deg, #12171D 0%, #1B232C 100%)",
+    heroRadial:  "radial-gradient(ellipse at 80% 10%, rgba(31,111,120,0.18) 0%, transparent 60%)",
+    darkSection: "linear-gradient(135deg, #0B1120 0%, #131923 100%)",
   },
 
   /**
    * Box shadow tokens.
    */
   shadows: {
-    card:        "0 1px 3px rgba(0,0,0,0.07), 0 1px 2px -1px rgba(0,0,0,0.05)",
-    cardHover:   "0 8px 24px rgba(0,0,0,0.10)",
-    cardAccent:  "0 0 0 1px rgba(122,92,58,0.18)",
+    card:        "0 1px 3px rgba(0,0,0,0.20), 0 1px 2px -1px rgba(0,0,0,0.15)",
+    cardHover:   "0 8px 24px rgba(0,0,0,0.35)",
+    cardAccent:  "0 0 0 1px rgba(31,111,120,0.18)",
     cardDark:    "0 0 0 1px rgba(255,255,255,0.07)",
   },
 
@@ -109,11 +109,11 @@ export const theme = {
    * See globals.css for .tone-* implementation.
    */
   sectionTones: {
-    light:          { cssClass: "tone-light",          bg: "#F3F1EC", description: "Default page background" },
-    white:          { cssClass: "tone-white",          bg: "#FCFBF8", description: "Clean warm-white surface" },
-    tinted:         { cssClass: "tone-tinted",         bg: "#EDE8E2", description: "Accent-light tinted" },
-    dark:           { cssClass: "tone-dark",           bg: "#12171D", description: "Primary dark (hero, final CTA)" },
-    darkSecondary:  { cssClass: "tone-dark-secondary", bg: "#1B232C", description: "Secondary dark" },
+    light:          { cssClass: "tone-light",          bg: "#131923", description: "Lighter dark (alternate sections)" },
+    white:          { cssClass: "tone-white",          bg: "#1A1F2B", description: "Charcoal surface (cleanest dark)" },
+    tinted:         { cssClass: "tone-tinted",         bg: "#0F1E28", description: "Teal-tinted dark surface" },
+    dark:           { cssClass: "tone-dark",           bg: "#0B1120", description: "Deep navy (hero, final CTA)" },
+    darkSecondary:  { cssClass: "tone-dark-secondary", bg: "#131923", description: "Secondary dark" },
   } as const,
 
   /**

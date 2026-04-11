@@ -8,16 +8,16 @@ import { siteContent } from "@/data/content"
 // Resting colors for each step index
 // Step 0 uses a slightly stronger accent tint as the natural "first" indicator
 const RESTING_COLOR = (i: number) =>
-  i === 0 ? "rgba(122,92,58,0.55)" : "rgba(122,92,58,0.28)"
+  i === 0 ? "rgba(31,111,120,0.55)" : "rgba(31,111,120,0.28)"
 
 const RESTING_COLOR_MOBILE = (i: number) =>
-  i === 0 ? "rgba(122,92,58,0.60)" : "rgba(122,92,58,0.30)"
+  i === 0 ? "rgba(31,111,120,0.60)" : "rgba(31,111,120,0.30)"
 
 // Lit state values
 const LIT_COLOR      = "var(--ga-accent)"
-const LIT_SHADOW     = "0 0 32px rgba(122,92,58,0.30), 0 0 64px rgba(122,92,58,0.12)"
+const LIT_SHADOW     = "0 0 32px rgba(245,158,11,0.30), 0 0 64px rgba(245,158,11,0.12)"
 // Match layer count so CSS can interpolate shadow smoothly (never use "none")
-const RESTING_SHADOW = "0 0 0px rgba(122,92,58,0), 0 0 0px rgba(122,92,58,0)"
+const RESTING_SHADOW = "0 0 0px rgba(245,158,11,0), 0 0 0px rgba(245,158,11,0)"
 
 // Sequence timing (ms)
 const GLOW_DURATION = 650   // how long each numeral stays lit
@@ -120,7 +120,7 @@ export default function ProcessSection() {
                   className="w-3 h-3 rounded-full"
                   style={{
                     backgroundColor: i === 0 ? "var(--ga-accent)" : "var(--ga-border)",
-                    boxShadow:       i === 0 ? "0 0 0 4px rgba(122,92,58,0.15)" : "none",
+                    boxShadow:       i === 0 ? "0 0 0 4px rgba(31,111,120,0.20)" : "none",
                   }}
                   aria-hidden
                 />

@@ -36,6 +36,11 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
         >
           {/* Left: Copy */}
           <div className={showImage ? "order-2 md:order-1" : ""}>
+            {/* Logo mark — subtle teal signal before headline */}
+            <div className="flex items-center gap-2.5 mb-5">
+              <HeroLogoMark />
+            </div>
+
             {hero.eyebrow && (
               <p className="text-xs font-bold uppercase tracking-widest text-ga-accent mb-5">
                 {hero.eyebrow}
@@ -82,7 +87,7 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
               <a
                 href="/audit"
                 className="underline underline-offset-2 transition-opacity hover:opacity-80"
-                style={{ color: "rgba(210,188,168,0.85)" }}
+                style={{ color: "rgba(245,158,11,0.90)" }}
               >
                 Start with the $97 Revenue Leak Audit
               </a>
@@ -104,10 +109,10 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                   className="absolute -top-5 left-0 right-0 flex items-center gap-2"
                   aria-hidden
                 >
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(122,92,58,0.25)" }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(31,111,120,0.25)" }} />
                   <span
                     className="text-[10px] tracking-widest uppercase"
-                    style={{ color: "rgba(122,92,58,0.4)", fontFamily: "monospace" }}
+                    style={{ color: "rgba(31,111,120,0.45)", fontFamily: "monospace" }}
                   >
                     founder
                   </span>
@@ -129,7 +134,7 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                     className="absolute inset-0 z-10 pointer-events-none"
                     style={{
                       background:
-                        "linear-gradient(160deg, rgba(122,92,58,0.20) 0%, transparent 50%)",
+                        "linear-gradient(160deg, rgba(31,111,120,0.15) 0%, transparent 50%)",
                     }}
                     aria-hidden
                   />
@@ -163,11 +168,11 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                 >
                   <span
                     className="text-[10px] tracking-widest uppercase"
-                    style={{ color: "rgba(122,92,58,0.4)", fontFamily: "monospace" }}
+                    style={{ color: "rgba(31,111,120,0.45)", fontFamily: "monospace" }}
                   >
                     ghost architect
                   </span>
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(122,92,58,0.25)" }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(31,111,120,0.25)" }} />
                 </div>
               </div>
             </div>
@@ -179,6 +184,27 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
         </div>
       </div>
     </section>
+  )
+}
+
+/** Blueprint grid logo mark — matches the Nav mark, teal tone */
+function HeroLogoMark() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden
+      style={{ color: "rgba(31,111,120,0.70)" }}
+    >
+      <rect x="1.5" y="1.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="1.5" y1="7" x2="18.5" y2="7" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="1.5" y1="13" x2="18.5" y2="13" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="7" y1="1.5" x2="7" y2="18.5" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="13" y1="1.5" x2="13" y2="18.5" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <circle cx="10" cy="10" r="1.75" fill="currentColor" />
+    </svg>
   )
 }
 

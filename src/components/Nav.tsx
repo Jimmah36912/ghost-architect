@@ -19,7 +19,7 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/96 backdrop-blur-md border-b border-ga-border shadow-sm"
+          ? "bg-ga-dark/95 backdrop-blur-md border-b border-ga-border shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -31,11 +31,12 @@ export default function Nav() {
           {/* Brand wordmark */}
           <a
             href="#"
-            className={`font-semibold text-base tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-ga-text" : "text-white"
-            }`}
+            className="flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-80"
           >
-            {nav.brand}
+            <LogoMark />
+            <span className="font-semibold text-base tracking-tight text-white">
+              {nav.brand}
+            </span>
           </a>
 
           {/* Desktop links */}
@@ -44,9 +45,7 @@ export default function Nav() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-ga-accent ${
-                  scrolled ? "text-ga-text-muted" : "text-white/75 hover:text-white"
-                }`}
+                className="text-sm font-medium text-ga-text-muted transition-colors duration-300 hover:text-ga-accent"
               >
                 {link.label}
               </a>
@@ -61,7 +60,7 @@ export default function Nav() {
               rel="noopener noreferrer"
               className={`hidden md:inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 scrolled
-                  ? "bg-ga-accent text-white hover:bg-ga-accent-dark"
+                  ? "bg-ga-accent text-ga-dark hover:bg-ga-accent-dark"
                   : "bg-white/10 text-white border border-white/30 hover:bg-white/20"
               }`}
             >
@@ -69,9 +68,7 @@ export default function Nav() {
             </a>
 
             <button
-              className={`md:hidden p-2 rounded-lg transition-colors ${
-                scrolled ? "text-ga-text" : "text-white"
-              }`}
+              className="md:hidden p-2 rounded-lg transition-colors text-white"
               onClick={() => setMenuOpen((o) => !o)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
@@ -109,6 +106,29 @@ export default function Nav() {
         </div>
       )}
     </header>
+  )
+}
+
+function LogoMark() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden
+      style={{ color: "var(--ga-accent-light)", flexShrink: 0 }}
+    >
+      {/* Outer architectural frame */}
+      <rect x="1.5" y="1.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      {/* Inner cross lines — blueprint grid motif */}
+      <line x1="1.5" y1="7" x2="18.5" y2="7" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="1.5" y1="13" x2="18.5" y2="13" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="7" y1="1.5" x2="7" y2="18.5" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      <line x1="13" y1="1.5" x2="13" y2="18.5" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.5" />
+      {/* Center accent node */}
+      <circle cx="10" cy="10" r="1.75" fill="currentColor" />
+    </svg>
   )
 }
 
