@@ -21,7 +21,7 @@ export default function WhyDifferentSection() {
           {whyDifferent.points.map((point) => (
             <li
               key={point}
-              className="flex items-start gap-3 p-4 rounded-xl bg-white"
+              className="flex items-start gap-3 p-4 rounded-xl bg-ga-surface"
               style={{ boxShadow: "var(--ga-shadow-card)" }}
             >
               <span
