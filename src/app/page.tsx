@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection"
 import AudienceFitSection from "@/components/AudienceFitSection"
 import PainPointsSection from "@/components/PainPointsSection"
 import TriedAlreadySection from "@/components/TriedAlreadySection"
+import AuditNudge from "@/components/AuditNudge"
 import WhyDifferentSection from "@/components/WhyDifferentSection"
 import CapabilitiesSection from "@/components/CapabilitiesSection"
 import BeforeAfterSection from "@/components/BeforeAfterSection"
@@ -33,6 +34,9 @@ export default function Home() {
 
         {/* 4. What You've Tried */}
         <TriedAlreadySection />
+
+        {/* 4.5. Revenue Leak Audit nudge — low-commitment bridge after problem framing */}
+        <AuditNudge />
 
         {/* 5. Why AI Advice Misses */}
         <WhyDifferentSection />

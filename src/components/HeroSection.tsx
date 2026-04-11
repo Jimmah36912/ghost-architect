@@ -60,7 +60,7 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
             </p>
 
             {/* CTA Pair */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 mb-5">
               <CTAButton
                 label={hero.primaryCTA.label}
                 href={hero.primaryCTA.href}
@@ -75,6 +75,18 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                 external={false}
               />
             </div>
+
+            {/* Audit nudge */}
+            <p className="text-sm mb-8" style={{ color: "rgba(148,163,184,0.65)" }}>
+              Not ready for the full session?{" "}
+              <a
+                href="/audit"
+                className="underline underline-offset-2 transition-opacity hover:opacity-80"
+                style={{ color: "rgba(210,188,168,0.85)" }}
+              >
+                Start with the $97 Revenue Leak Audit
+              </a>
+            </p>
 
             {/* Support microcopy */}
             <p className="text-sm tracking-wide" style={{ color: "rgba(148,163,184,0.7)" }}>

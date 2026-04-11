@@ -95,6 +95,13 @@ export default function AuditPage() {
       {/* Dark header */}
       <section className="tone-dark pt-28 pb-14">
         <div className="section-container max-w-2xl">
+          <a
+            href="/"
+            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-80"
+            style={{ color: "rgba(148,163,184,0.6)" }}
+          >
+            ← Back to home
+          </a>
           <span className="accent-line" aria-hidden />
           <h1
             className="font-bold text-white mb-4 leading-tight"

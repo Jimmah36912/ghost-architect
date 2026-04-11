@@ -95,6 +95,13 @@ export default function ApplyPage() {
         <section className="tone-dark pt-24 pb-14">
           <div className="section-container">
             <div className="max-w-2xl mx-auto text-center">
+              <a
+                href="/"
+                className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-80"
+                style={{ color: "rgba(148,163,184,0.6)" }}
+              >
+                ← Back to home
+              </a>
               <span className="accent-line-centered" aria-hidden />
               <h1
                 className="font-bold text-white mb-5 leading-tight"
