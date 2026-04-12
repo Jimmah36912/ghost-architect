@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { HeroImage } from "./HeroImage"
 import { siteContent } from "@/data/content"
 import { assets } from "@/data/assets"
@@ -187,23 +188,16 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
   )
 }
 
-/** JL monogram — same V1 mark as Nav, slightly larger for hero context */
+/** JL monogram — PNG logo, slightly larger for hero context */
 function HeroLogoMark() {
   return (
-    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" aria-hidden style={{ color: "rgba(31,111,120,0.70)" }}>
-      {/* J */}
-      <line x1="21" y1="21" x2="45" y2="21" stroke="currentColor" strokeWidth="3.5" strokeLinecap="square" />
-      <line x1="33" y1="21" x2="33" y2="68" stroke="currentColor" strokeWidth="3.5" />
-      <path d="M 33 68 A 11 11 0 0 1 22 79" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-      {/* L */}
-      <line x1="51" y1="21" x2="69" y2="21" stroke="currentColor" strokeWidth="3.5" strokeLinecap="square" />
-      <line x1="59" y1="21" x2="59" y2="79" stroke="currentColor" strokeWidth="3.5" />
-      <line x1="59" y1="79" x2="81" y2="79" stroke="currentColor" strokeWidth="3.5" strokeLinecap="square" />
-      {/* Architectural rule */}
-      <line x1="10" y1="44" x2="90" y2="44" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" strokeOpacity="0.45" />
-      {/* Center diamond */}
-      <path d="M 50 40.5 L 54 44 L 50 47.5 L 46 44 Z" stroke="currentColor" strokeWidth="1.25" strokeOpacity="0.65" fill="none" />
-    </svg>
+    <Image
+      src="/jl-logo.png"
+      alt="Jimmy Long"
+      width={60}
+      height={40}
+      className="object-contain opacity-80"
+    />
   )
 }
 
