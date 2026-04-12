@@ -30,8 +30,9 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-lg font-semibold mb-3" style={{ color: "var(--ga-text)" }}>1. Acceptance of Terms</h2>
               <p>
-                By accessing this website or engaging with the consulting services of Jimmy Long ("we," "us,"
-                or "our"), you agree to be bound by these Terms of Service. If you do not agree to these
+                By accessing this website or engaging with the consulting services of Long Fulfillment LLC,
+                operating as Jimmy Long ("we," "us," or "our"), you agree to be bound by these Terms of
+                Service. If you do not agree to these
                 terms, please do not use this website or our services.
               </p>
             </section>
@@ -174,7 +175,7 @@ export default function TermsOfServicePage() {
                 className="mt-4 p-5 rounded-xl text-sm"
                 style={{ backgroundColor: "var(--ga-surface)", border: "1px solid var(--ga-border)" }}
               >
-                <p className="font-semibold mb-1" style={{ color: "var(--ga-text)" }}>Jimmy Long</p>
+                <p className="font-semibold mb-1" style={{ color: "var(--ga-text)" }}>Long Fulfillment LLC (Jimmy Long)</p>
                 <p>Email: <a href="mailto:jimmy@jimmy-long.com" className="hover:opacity-80 underline" style={{ color: "var(--ga-accent)" }}>jimmy@jimmy-long.com</a></p>
               </div>
             </section>

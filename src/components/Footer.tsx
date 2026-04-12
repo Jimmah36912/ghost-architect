@@ -110,9 +110,14 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-xs" style={{ color: "rgba(148,163,184,0.4)" }}>
-            © {year} {footer.brand}. All rights reserved.
-          </p>
+          <div>
+            <p className="text-xs" style={{ color: "rgba(148,163,184,0.4)" }}>
+              © {year} {footer.brand}. All rights reserved.
+            </p>
+            <p className="text-xs mt-0.5" style={{ color: "rgba(148,163,184,0.25)" }}>
+              Long Fulfillment LLC
+            </p>
+          </div>
 
           <div className="flex items-center gap-6">
             {footer.legal.map((link) => (
