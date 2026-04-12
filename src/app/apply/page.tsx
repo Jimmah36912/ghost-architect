@@ -17,7 +17,6 @@ import Footer from "@/components/Footer"
 const EMPTY_FORM = {
   name:                "",
   email:               "",
-  phone:               "",
   used_ai:             "",
   ai_knowledge:        "",
   company_description: "",
@@ -172,7 +171,7 @@ export default function ApplyPage() {
                 >
                   <form onSubmit={handleSubmit} noValidate className="space-y-7">
 
-                    {/* Name / Email / Phone ───────────────────────────── */}
+                    {/* Name / Email ───────────────────────────────────── */}
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label
@@ -218,29 +217,6 @@ export default function ApplyPage() {
                           style={inputBase}
                         />
                       </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="apply-phone"
-                        className={labelClass}
-                        style={{ color: "var(--ga-text-muted)" }}
-                      >
-                        Phone Number <Required />
-                      </label>
-                      <input
-                        id="apply-phone"
-                        name="phone"
-                        type="tel"
-                        required
-                        placeholder="(555) 000-0000"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        className={inputClass}
-                        style={inputBase}
-                      />
                     </div>
 
                     {/* Divider ────────────────────────────────────────── */}

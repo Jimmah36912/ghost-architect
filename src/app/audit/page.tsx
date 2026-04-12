@@ -10,7 +10,6 @@ const STRIPE_PAYMENT_URL = "https://book.stripe.com/cNi3cwdiq3Hf1dV0Is9Ve00"
 interface Fields {
   name: string
   email: string
-  phone: string
   business_name: string
   website: string
   business_description: string
@@ -26,7 +25,6 @@ interface Fields {
 const EMPTY: Fields = {
   name: "",
   email: "",
-  phone: "",
   business_name: "",
   website: "",
   business_description: "",
@@ -195,37 +193,21 @@ export default function AuditPage() {
                   </div>
                 </div>
 
-                {/* Row: Phone + Business Name */}
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className={labelClass} htmlFor="audit-phone">Phone Number <span className="normal-case font-normal">(optional)</span></label>
-                    <input
-                      id="audit-phone"
-                      type="tel"
-                      name="phone"
-                      placeholder="(555) 000-0000"
-                      value={fields.phone}
-                      onChange={set("phone")}
-                      className={inputClass}
-                      style={inputStyle}
-                      {...focusSwap}
-                    />
-                  </div>
-                  <div>
-                    <label className={labelClass} htmlFor="audit-business-name">Business Name</label>
-                    <input
-                      id="audit-business-name"
-                      type="text"
-                      name="business_name"
-                      required
-                      placeholder="Your business"
-                      value={fields.business_name}
-                      onChange={set("business_name")}
-                      className={inputClass}
-                      style={inputStyle}
-                      {...focusSwap}
-                    />
-                  </div>
+                {/* Business Name */}
+                <div>
+                  <label className={labelClass} htmlFor="audit-business-name">Business Name</label>
+                  <input
+                    id="audit-business-name"
+                    type="text"
+                    name="business_name"
+                    required
+                    placeholder="Your business"
+                    value={fields.business_name}
+                    onChange={set("business_name")}
+                    className={inputClass}
+                    style={inputStyle}
+                    {...focusSwap}
+                  />
                 </div>
 
                 {/* Website */}
