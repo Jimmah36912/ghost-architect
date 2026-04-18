@@ -20,8 +20,9 @@ export const siteContent = {
   nav: {
     brand: "Jimmy Long",
     links: [
-      { label: "How It Works", href: "/#process" },
-      { label: "The Offer",    href: "/#offer"   },
+      { label: "How It Works", href: "/#process"   },
+      { label: "Who It's For", href: "/#audience"  },
+      { label: "Diagnostic",   href: "/audit"      },
     ],
     cta: { label: "Book a Call", href: BOOKING_URL },
   },

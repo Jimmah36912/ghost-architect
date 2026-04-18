@@ -99,6 +99,7 @@
   --color-ga-accent-light:    var(--ga-accent-light);
   --color-ga-border:          var(--ga-border);
   --font-sans:                var(--font-inter);
+  --font-serif:               var(--font-playfair);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -120,6 +121,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: var(--ga-line-height-body);
+}
+
+h1, h2 {
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 :focus-visible {

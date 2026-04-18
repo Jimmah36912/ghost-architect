@@ -6,7 +6,7 @@ export default function AudienceFitSection() {
   const { audienceFit } = siteContent
 
   return (
-    <SectionWrapper tone="light">
+    <SectionWrapper tone="light" id="audience">
       <SectionHeading headline={audienceFit.headline} />
 
       <div className="grid md:grid-cols-2 gap-12 mt-10 items-start">
