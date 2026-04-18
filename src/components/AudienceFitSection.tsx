@@ -7,24 +7,18 @@ export default function AudienceFitSection() {
 
   return (
     <SectionWrapper tone="light">
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        {/* Left: Heading + intro */}
-        <div>
-          <SectionHeading headline={audienceFit.headline} />
-          <p className="text-ga-text-muted leading-relaxed mt-6 text-lg">
-            {audienceFit.intro}
-          </p>
-        </div>
+      <SectionHeading headline={audienceFit.headline} />
 
-        {/* Right: Bullets */}
-        <ul className="space-y-4 pt-1">
+      <div className="grid md:grid-cols-2 gap-12 mt-10 items-start">
+        {/* Left: Fit bullets */}
+        <ul className="space-y-4">
           {audienceFit.bullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-3">
               <span
                 className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
                 style={{
-                  backgroundColor: "var(--ga-accent-light)",
-                  color: "var(--ga-accent)",
+                  backgroundColor: "rgba(49,91,76,0.18)",
+                  color: "var(--ga-accent-light)",
                 }}
                 aria-hidden
               >
@@ -42,6 +36,32 @@ export default function AudienceFitSection() {
             </li>
           ))}
         </ul>
+
+        {/* Right: Industry + not-for */}
+        <div className="space-y-6">
+          <div
+            className="p-5 rounded-xl"
+            style={{
+              backgroundColor: "rgba(49,91,76,0.10)",
+              border: "1px solid rgba(49,91,76,0.22)",
+            }}
+          >
+            <p className="text-sm leading-relaxed" style={{ color: "var(--ga-text)" }}>
+              {audienceFit.industryLine}
+            </p>
+          </div>
+          <div
+            className="p-5 rounded-xl"
+            style={{
+              backgroundColor: "rgba(255,255,255,0.03)",
+              border: "1px solid var(--ga-border)",
+            }}
+          >
+            <p className="text-sm leading-relaxed italic" style={{ color: "var(--ga-text-muted)" }}>
+              {audienceFit.notForLine}
+            </p>
+          </div>
+        </div>
       </div>
     </SectionWrapper>
   )

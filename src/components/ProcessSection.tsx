@@ -6,22 +6,20 @@ import { SectionHeading } from "./ui/SectionHeading"
 import { siteContent } from "@/data/content"
 
 // Resting colors for each step index
-// Step 0 uses a slightly stronger accent tint as the natural "first" indicator
 const RESTING_COLOR = (i: number) =>
-  i === 0 ? "rgba(31,111,120,0.55)" : "rgba(31,111,120,0.28)"
+  i === 0 ? "rgba(49,91,76,0.55)" : "rgba(49,91,76,0.28)"
 
 const RESTING_COLOR_MOBILE = (i: number) =>
-  i === 0 ? "rgba(31,111,120,0.60)" : "rgba(31,111,120,0.30)"
+  i === 0 ? "rgba(49,91,76,0.60)" : "rgba(49,91,76,0.30)"
 
 // Lit state values
 const LIT_COLOR      = "var(--ga-accent)"
-const LIT_SHADOW     = "0 0 32px rgba(245,158,11,0.30), 0 0 64px rgba(245,158,11,0.12)"
-// Match layer count so CSS can interpolate shadow smoothly (never use "none")
-const RESTING_SHADOW = "0 0 0px rgba(245,158,11,0), 0 0 0px rgba(245,158,11,0)"
+const LIT_SHADOW     = "0 0 32px rgba(185,106,46,0.30), 0 0 64px rgba(185,106,46,0.12)"
+const RESTING_SHADOW = "0 0 0px rgba(185,106,46,0), 0 0 0px rgba(185,106,46,0)"
 
 // Sequence timing (ms)
-const GLOW_DURATION = 650   // how long each numeral stays lit
-const STEP_GAP      = 700   // gap between each step's light-on moment
+const GLOW_DURATION = 650
+const STEP_GAP      = 700
 
 export default function ProcessSection() {
   const { process } = siteContent
@@ -81,15 +79,17 @@ export default function ProcessSection() {
     }
   }
 
+  const { timeline } = process
+
   return (
     <SectionWrapper tone="white" id="process">
       <div ref={contentRef}>
         <SectionHeading headline={process.headline} align="center" />
 
-        {/* Desktop: three-row blueprint layout */}
+        {/* Desktop: four-column blueprint layout */}
         <div className="hidden md:block mt-16">
           {/* Row 1: Ghost numerals */}
-          <div className="grid grid-cols-5 gap-8 mb-2">
+          <div className="grid grid-cols-4 gap-8 mb-2">
             {process.steps.map((step, i) => (
               <div key={step.number} className="flex justify-center">
                 <span
@@ -104,10 +104,9 @@ export default function ProcessSection() {
           </div>
 
           {/* Row 2: Dashed connector line + dots */}
-          <div className="relative grid grid-cols-5 gap-8 my-3">
-            {/* Full-width dashed connector behind dots */}
+          <div className="relative grid grid-cols-4 gap-8 my-3">
             <div
-              className="absolute top-1/2 left-[10%] right-[10%] -translate-y-1/2 h-px"
+              className="absolute top-1/2 left-[12%] right-[12%] -translate-y-1/2 h-px"
               style={{
                 backgroundImage:
                   "repeating-linear-gradient(to right, var(--ga-border) 0, var(--ga-border) 6px, transparent 6px, transparent 14px)",
@@ -120,7 +119,7 @@ export default function ProcessSection() {
                   className="w-3 h-3 rounded-full"
                   style={{
                     backgroundColor: i === 0 ? "var(--ga-accent)" : "var(--ga-border)",
-                    boxShadow:       i === 0 ? "0 0 0 4px rgba(31,111,120,0.20)" : "none",
+                    boxShadow:       i === 0 ? "0 0 0 4px rgba(49,91,76,0.20)" : "none",
                   }}
                   aria-hidden
                 />
@@ -129,7 +128,7 @@ export default function ProcessSection() {
           </div>
 
           {/* Row 3: Title + body */}
-          <div className="grid grid-cols-5 gap-8 mt-5">
+          <div className="grid grid-cols-4 gap-8 mt-5">
             {process.steps.map((step, i) => (
               <div key={step.number} className="text-center">
                 <h3
@@ -144,11 +143,10 @@ export default function ProcessSection() {
           </div>
         </div>
 
-        {/* Mobile: vertical stack with dashed connector */}
+        {/* Mobile: vertical stack */}
         <div className="md:hidden mt-10 space-y-0">
           {process.steps.map((step, i) => (
             <div key={step.number} className="flex gap-6">
-              {/* Left: numeral + dashed connector */}
               <div className="flex flex-col items-center" style={{ minWidth: "3rem" }}>
                 <span
                   className="font-bold leading-none select-none process-numeral"
@@ -170,8 +168,6 @@ export default function ProcessSection() {
                   />
                 )}
               </div>
-
-              {/* Right: content */}
               <div className="pb-8 pt-1">
                 <h3
                   className="font-semibold mb-2"
@@ -184,6 +180,44 @@ export default function ProcessSection() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Timeline */}
+      <div className="mt-16 pt-12" style={{ borderTop: "1px solid var(--ga-border)" }}>
+        <h3
+          className="font-semibold text-center mb-8 text-lg"
+          style={{ color: "var(--ga-text-muted)" }}
+        >
+          {timeline.headline}
+        </h3>
+        <div className="grid sm:grid-cols-3 gap-6">
+          {timeline.phases.map((phase) => (
+            <div
+              key={phase.period}
+              className="rounded-xl p-5"
+              style={{
+                backgroundColor: "var(--ga-surface)",
+                border: "1px solid var(--ga-border)",
+              }}
+            >
+              <p
+                className="text-xs font-bold uppercase tracking-widest mb-3"
+                style={{ color: "var(--ga-accent)" }}
+              >
+                {phase.period}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--ga-text-muted)" }}>
+                {phase.body}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p
+          className="text-sm leading-relaxed text-center mt-6 max-w-2xl mx-auto"
+          style={{ color: "var(--ga-text-muted)" }}
+        >
+          {timeline.expectation}
+        </p>
       </div>
     </SectionWrapper>
   )

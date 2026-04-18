@@ -11,9 +11,9 @@ export const siteContent = {
 
   // ── Metadata ─────────────────────────────────────────────────────────────
   meta: {
-    title: "Revenue Recovery and Client Flow Consulting | Jimmy Long",
+    title: "Revenue Recovery Systems for Service Businesses | Jimmy Long",
     description:
-      "Jimmy Long helps small businesses recover revenue by fixing client flow, follow-up, and operational infrastructure — without adding complexity.",
+      "Jimmy Long identifies where revenue is leaking, fixes the highest-value problems in the right order, and installs the systems that turn more existing demand into booked work.",
   },
 
   // ── Navigation ────────────────────────────────────────────────────────────
@@ -28,292 +28,233 @@ export const siteContent = {
 
   // ── Hero ──────────────────────────────────────────────────────────────────
   hero: {
-    eyebrow:     "",
-    headline:    "Recover the Revenue Your Business Is Already Losing",
+    eyebrow:     "Revenue Recovery Systems for Service Businesses",
+    headline:    "Stop Losing Revenue From Demand You Already Have",
     subheadline:
-      "Most businesses don't have a lead problem. They have a recovery problem. You already have interest coming in. The issue is what happens to it — inconsistent follow-up, missed opportunities, and a client flow that breaks under pressure.",
-    supportLine: "Quiet systems. Captured revenue. Stronger client flow.",
-    primaryCTA:  { label: "Book a Discovery Call",     href: BOOKING_URL },
-    secondaryCTA:{ label: "See How the Process Works", href: "#process"  },
-  },
-
-  // ── Who This Is For ───────────────────────────────────────────────────────
-  audienceFit: {
-    headline:
-      "This Is for Businesses That Are Growing, but Still Losing Revenue in the Gaps",
-    intro:
-      "Follow-up is inconsistent. Opportunities slip through. Client flow breaks under volume. If that is your business, you are in the right place.",
+      "Most service businesses do not need more leads first. They need to recover more revenue from the calls, inquiries, estimates, consult requests, and opportunities they are already generating. Jimmy Long identifies where revenue is leaking, fixes the highest-value problems in the right order, and installs the systems that help more existing demand turn into booked work.",
+    supportLine:
+      "Built for service businesses that are already generating demand — but know too much of it is dying before it turns into revenue.",
+    primaryCTA:   { label: "Book Revenue Leak Exposure",      href: "/audit"   },
+    secondaryCTA: { label: "See How Revenue Recovery Works",  href: "#process" },
     bullets: [
-      "Established business with steady demand and a team in place",
-      "Too much still depends on the owner to keep things moving",
-      "Operations are active but not consistently converting",
-      "Follow-up and communication break down under volume",
-      "Opportunities are missed, delayed, or not fully handled",
-      "You want clarity and structure — not more complexity",
+      "Recover missed opportunities",
+      "Fix inconsistent follow-up",
+      "Reduce response gaps",
+      "Remove owner bottlenecks",
+      "Improve conversion from existing demand",
     ],
   },
 
-  // ── Pain Points ───────────────────────────────────────────────────────────
-  painPoints: {
-    headline:
-      "The Problem Is Not Effort. It Is Revenue Leaks Inside the Business.",
-    cards: [
-      {
-        title: "Uncaptured Opportunities",
-        body:  "Inbound interest that is missed, ignored, or not properly tracked.",
-      },
-      {
-        title: "Inconsistent Follow-Up",
-        body:  "Prospects go cold because timing and persistence are unreliable.",
-      },
-      {
-        title: "Communication Delays",
-        body:  "Slow responses reduce conversion before a decision is made.",
-      },
-      {
-        title: "Dropped Handoffs",
-        body:  "Breakdowns between inquiry, response, and close that cost deals.",
-      },
-      {
-        title: "Owner Bottlenecks",
-        body:  "Too many decisions flowing through one person slows everything.",
-      },
-      {
-        title: "Unstable Client Flow",
-        body:  "Processes that hold sometimes, then fail under pressure.",
-      },
-      {
-        title: "Manual Operational Load",
-        body:  "Repetitive work consuming time without improving revenue.",
-      },
-      {
-        title: "Patchwork Fixes",
-        body:  "Temporary solutions that never address the underlying gaps.",
-      },
-    ],
-  },
-
-  // ── What You've Already Tried ─────────────────────────────────────────────
-  triedAlready: {
-    headline: "You Have Probably Already Tried to Fix This",
-    intro:
-      "Most business owners we work with have already made real efforts. The issue was not effort — it was missing infrastructure.",
-    items: [
-      {
-        label: "Handling everything manually",
-        body:  "Relying on memory and effort to keep follow-up running — and watching it slip anyway.",
-      },
-      {
-        label: "Using basic tools",
-        body:  "Partial fixes that never addressed the full client flow.",
-      },
-      {
-        label: "Trying AI casually",
-        body:  "Disconnected use without integration into operations.",
-      },
-      {
-        label: "Adding more software",
-        body:  "Increasing complexity without improving results.",
-      },
-      {
-        label: "Pushing the team harder",
-        body:  "Expecting consistency without system support.",
-      },
-      {
-        label: "Experimenting without direction",
-        body:  "No clear prioritization or measurement of impact.",
-      },
-    ],
-  },
-
-  // ── Why Most Advice Misses ────────────────────────────────────────────────
-  whyDifferent: {
-    headline:
-      "Most Advice Starts in the Wrong Place",
+  // ── Market Reframe ────────────────────────────────────────────────────────
+  marketReframe: {
+    headline: "You Probably Don't Have a Lead Problem First",
     body:
-      "If five leads a month go cold without follow-up — at $500 per conversion — that is $30,000 a year walking out the door. Most businesses are not short on demand. They are short on recovery. We fix the infrastructure first.",
-    points: [
-      "Identify where revenue is actually leaking",
-      "Understand how client flow breaks down",
-      "Prioritize the highest-impact fixes first",
-      "Install systems that support real operations",
-      "Reduce friction instead of adding complexity",
-    ],
+      "Most service businesses assume the answer is more traffic, more ads, more SEO, or another new tool. But if calls are missed, follow-up is inconsistent, estimates go cold, consult requests stall, and communication changes depending on who responds, more demand usually just creates more waste.",
+    emphasis:
+      "That is why the real problem is often not lead generation first. It is revenue leakage after interest already exists.",
   },
 
-  // ── Capabilities ──────────────────────────────────────────────────────────
-  capabilities: {
-    headline: "We Recover Revenue by Fixing Client Flow and Infrastructure",
-    midCTA:   { label: "Book a Discovery Call", href: BOOKING_URL },
-    cards: [
+  // ── Why Typical Solutions Underperform ───────────────────────────────────
+  whyTypicalFails: {
+    headline: "More Activity Does Not Fix a Leaking System",
+    columns: [
       {
-        title: "Capture More Opportunities",
-        body:  "Inbound leads, calls, and inquiries consistently tracked and handled.",
+        label: "Most Agencies Sell",
+        items: [
+          "more traffic",
+          "more campaigns",
+          "more content",
+          "more channels",
+          "more monthly activity",
+        ],
       },
       {
-        title: "Strengthen Follow-Up",
-        body:  "Reliable conversion coordination that removes dependency on memory.",
+        label: "Most Software Sells",
+        items: [
+          "more features",
+          "more dashboards",
+          "more inboxes",
+          "more automations",
+          "more complexity",
+        ],
       },
       {
-        title: "Improve Communication Timing",
-        body:  "Faster, more consistent responses that improve conversion rates.",
-      },
-      {
-        title: "Stabilize Client Flow",
-        body:  "Structured, repeatable processes that hold under pressure and volume.",
-      },
-      {
-        title: "Support the Team with Infrastructure",
-        body:  "Simple systems that make execution consistent for everyone.",
-      },
-      {
-        title: "Reduce Owner Dependency",
-        body:  "Move key actions and decisions into reliable systems.",
+        label: "What Jimmy Long Builds",
+        items: [
+          "diagnosis",
+          "prioritization",
+          "sequencing",
+          "selective implementation",
+          "recovered revenue",
+        ],
+        highlight: true,
       },
     ],
+    bottomStatement:
+      "You do not need more disconnected tactics. You need to know where money is being lost, what is costing the most, what must be fixed first, and what system will actually improve conversion.",
   },
 
-  // ── Before / After ────────────────────────────────────────────────────────
-  beforeAfter: {
-    headline: "Before and After Revenue Recovery",
-    before: [
-      "Revenue leaks hidden inside daily operations",
-      "Opportunities missed or inconsistently handled",
-      "Follow-up dependent on people, not systems",
-      "Client flow breaks under pressure",
-      "Owner carries too much operational load",
-      "No visibility into what is actually costing revenue",
-    ],
-    after: [
-      "Opportunities consistently captured and tracked",
-      "Follow-up runs with structure and reliability",
-      "Faster responses improve conversion rates",
-      "Client flow holds under volume and pressure",
-      "Owner dependency reduced",
-      "Clear visibility into where revenue is gained or lost",
+  // ── Purple Ocean Positioning ──────────────────────────────────────────────
+  whyDifferent: {
+    headline: "Not Another Agency. Not Just Another Tool.",
+    body:
+      "Jimmy Long sits in the gap between marketing promises and operational chaos. This is not generic lead generation. This is not a software demo. This is not another automation-first pitch. It is revenue recovery infrastructure for service businesses that already have opportunities coming in — but are losing too many of them through slow follow-up, weak handoffs, inconsistent communication, owner dependency, and broken conversion paths.",
+    positioningLine:
+      "We do not sell more noise. We recover more revenue from what already exists.",
+  },
+
+  // ── Revenue Recovery Sequencing™ ─────────────────────────────────────────
+  revenueSequencing: {
+    headline: "Revenue Recovery Sequencing™",
+    body:
+      "This is the core mechanism behind the work. Instead of prescribing random tactics, Jimmy Long first identifies where revenue is leaking, then ranks those problems by impact, then fixes them in the order most likely to create the fastest lift in booked jobs, appointments, consults, and signed clients. That means you do not waste time solving the wrong problem first.",
+    bullets: [
+      "Exposes hidden revenue leaks",
+      "Identifies what is costing the most",
+      "Determines what should be fixed first",
+      "Turns disconnected effort into a recovery system",
     ],
   },
 
   // ── Process ───────────────────────────────────────────────────────────────
   process: {
-    headline: "How the Process Works",
+    headline: "How Revenue Recovery Works",
     steps: [
       {
         number: "01",
-        title:  "Audit Revenue Leaks",
+        title:  "Revenue Leak Exposure",
         body:
-          "Map where capture, follow-up, and conversion are failing in your business.",
+          "A focused diagnostic that shows where revenue is being lost across inquiry handling, follow-up, estimates, consult requests, communication, handoffs, and owner dependency.",
       },
       {
         number: "02",
-        title:  "Identify Highest-Impact Fixes",
+        title:  "Revenue Recovery Sequencing™",
         body:
-          "Pinpoint what to fix first. Not everything — just the changes that move money.",
+          "A clear priority map that determines what to fix first, what to fix next, and what can wait — based on impact, not guesswork.",
       },
       {
         number: "03",
-        title:  "Build the Recovery Plan",
+        title:  "Ghost Architect Installation",
         body:
-          "You leave with a prioritized roadmap and clear next steps. No guesswork.",
+          "Selective implementation of the highest-value recovery systems needed to improve response, follow-up, consistency, and conversion.",
       },
       {
         number: "04",
-        title:  "Install the Infrastructure",
+        title:  "Revenue Control & Expansion",
         body:
-          "Build the systems. Simple, structured, and designed for how you actually operate.",
-      },
-      {
-        number: "05",
-        title:  "Lock In the Gains",
-        body:
-          "Refine what is working. Expand on what is proven. Nothing new until what is built holds.",
+          "Ongoing refinement that protects recovered revenue, tightens execution, and strengthens the business before further scale.",
       },
     ],
+    timeline: {
+      headline: "Expected Timeline",
+      phases: [
+        {
+          period: "Days 1–7",
+          body:   "Clarity on where revenue is leaking and which breakdowns matter most.",
+        },
+        {
+          period: "Days 8–30",
+          body:   "Quick wins begin through the first recovery fixes: response speed, follow-up consistency, stale opportunity recovery, communication alignment.",
+        },
+        {
+          period: "Days 30–90",
+          body:   "More meaningful improvement as the system stabilizes and the highest-value leaks are addressed.",
+        },
+      ],
+      expectation:
+        "Most clients should expect early clarity and measurable momentum quickly, with more visible improvement typically showing between 30 and 90 days depending on access, responsiveness, and implementation speed.",
+    },
   },
 
-  // ── Strategy Intensive (Primary Offer) ───────────────────────────────────
-  strategyIntensive: {
-    headline:    "Start With the Revenue Recovery Intensive",
-    subheadline:
-      "Find out exactly where you are losing revenue — and what to fix first.",
-    badge:       "Best First Step",
-    price:       "$1,500",
-    deliverables: [
-      "One 90-minute strategy session",
-      "Review of client flow, team capacity, and revenue leaks",
-      "Custom Revenue Recovery Audit",
-      "Prioritized action plan",
-      "Recommended infrastructure and tools",
-      "90-day implementation roadmap",
-      "30 days of follow-up support",
+  // ── Before / After ────────────────────────────────────────────────────────
+  beforeAfter: {
+    headline: "What Changes When the Leaks Get Fixed",
+    before: [
+      "Opportunities slip through the cracks",
+      "Follow-up depends on memory and busy staff",
+      "Revenue feels noisy and under-converted",
+      "The owner has to hold too much together",
+      "Communication varies from person to person",
+      "Marketing spend feeds a weak system",
     ],
-    idealFor:
-      "For owners who want fast clarity, not more study. We identify the leaks, build the plan, and get you moving.",
-    primaryCTA:   { label: "Apply for the Intensive",       href: "/apply"    },
-    secondaryCTA: { label: "Book a Discovery Call First",   href: BOOKING_URL },
-  },
-
-  // ── Why Start Here ────────────────────────────────────────────────────────
-  whyStartHere: {
-    headline: "Why Most Clients Start Here",
-    body:
-      "Every week without fixed infrastructure is revenue walking away. The Intensive ends the guesswork fast — and gives you a clear path before more opportunities slip through.",
-    points: [
-      "Where opportunities are slipping through",
-      "Which part of client flow is costing the most",
-      "What to fix first for real impact",
-      "How to improve without adding complexity",
+    after: [
+      "More existing demand turns into revenue",
+      "Follow-up becomes structured and consistent",
+      "Revenue becomes cleaner and more predictable",
+      "The business runs with more control and less heroics",
+      "Customer experience feels more aligned and professional",
+      "Demand converts through a stronger system",
     ],
-    closing:
-      "You leave with a clear picture and a plan. Not a list of ideas — a real next step.",
   },
 
-  // ── Monthly Advisory (Secondary Offer) ───────────────────────────────────
-  monthlyAdvisory: {
-    headline:    "Need Continued Support?",
-    subheadline: "Monthly Advisory",
-    body:
-      "For businesses that want help implementing and refining their revenue systems over time.",
-    price: "$1,000 / month",
-    deliverables: [
-      "One 60-minute advisory session each month",
-      "Ongoing review of revenue leaks and priorities",
-      "Guidance on client flow and team execution",
-      "Recommendations to improve capture and conversion",
-      "Email and text support between sessions",
+  // ── Who This Is For ───────────────────────────────────────────────────────
+  audienceFit: {
+    headline: "Built for Service Businesses That Already Have Demand",
+    bullets: [
+      "You are already getting calls, inquiries, consult requests, estimates, or inbound opportunities",
+      "You feel like you should be converting more of that demand than you are",
+      "Follow-up is inconsistent or delayed",
+      "Too much depends on the owner or a few key people to keep things moving",
+      "You know money is slipping through the cracks, but do not have a clean diagnosis of where",
+      "You are tired of buying more marketing before the current system is fixed",
     ],
-    note:
-      "Most clients begin with the Intensive, then continue as needed.",
-    cta: { label: "Ask About Monthly Advisory", href: BOOKING_URL },
+    industryLine:
+      "This works especially well for home services, legal, med spas, dental, medical, and other appointment- or consultation-driven businesses.",
+    notForLine:
+      "This is not for companies looking for a generic SEO package, ad management only, or a cheap software install.",
   },
 
-  // ── Trust ─────────────────────────────────────────────────────────────────
+  // ── Why Choose Jimmy Long ─────────────────────────────────────────────────
   trust: {
-    headline: "Why Clients Work With Me",
+    headline: "Why Buyers Choose This Over Agencies, Software, and Random Fixes",
     points: [
       {
-        title: "Revenue-First Thinking",
-        body:  "Every decision is based on impact — where money is gained or lost.",
+        title: "Diagnosis before prescription",
+        body:  "You are not pushed into a solution before the real problem is clear.",
       },
       {
-        title: "Clarity Before Infrastructure",
-        body:  "We identify the real problem before building anything.",
+        title: "Revenue-first focus",
+        body:  "The work is anchored to recovered revenue, booked business, and conversion improvement — not vanity metrics.",
       },
       {
-        title: "Low-Pressure Approach",
-        body:  "No hype, no inflated promises — just honest assessment.",
+        title: "Sequence over scattered tactics",
+        body:  "Fixing the wrong thing first wastes time and money. The order matters.",
       },
       {
-        title: "Built for Real Operations",
-        body:  "Systems are designed for how your business actually runs.",
+        title: "Strategy plus implementation",
+        body:  "You get premium diagnosis and prioritization, plus selective done-for-you execution where it creates the most leverage.",
       },
       {
-        title: "Quiet, Reliable Infrastructure",
-        body:  "The best systems run in the background and improve consistency.",
+        title: "A stronger system before more scale",
+        body:  "The goal is not to pour more demand into chaos. The goal is to make the business convert better first.",
+      },
+    ],
+  },
+
+  // ── Ways to Work Together ─────────────────────────────────────────────────
+  waysToWork: {
+    headline: "Ways to Work Together",
+    offers: [
+      {
+        title:       "Revenue Leak Exposure",
+        body:        "A focused diagnostic that shows where jobs, appointments, consults, and clients are being lost.",
+        pricing:     "Starting at $197",
+        pricingNote: "public offer",
+        cta:         { label: "Start the Diagnostic", href: "/audit" },
       },
       {
-        title: "Operator Mindset",
-        body:  "Focused on how businesses actually function day-to-day.",
+        title:       "Revenue Recovery Install",
+        body:        "We fix the highest-value problems in the right order and install the systems that improve conversion.",
+        pricing:     "Custom scope after diagnosis",
+        pricingNote: "scoped after exposure",
+        cta:         { label: "Book a Call", href: BOOKING_URL },
+      },
+      {
+        title:       "Revenue Control & Expansion",
+        body:        "Ongoing optimization to protect recovered revenue and improve performance over time.",
+        pricing:     "Available after implementation",
+        pricingNote: "ongoing engagement",
+        cta:         { label: "Book a Call", href: BOOKING_URL },
       },
     ],
   },
@@ -324,74 +265,79 @@ export const siteContent = {
     items: [
       {
         q: "Is this a fit for my business?",
-        a: "If you run an owner-led business with a team and you are experiencing bottlenecks, inconsistent follow-up, or repetitive work that eats up time — yes. The specific industry matters less than the operational situation.",
+        a: "If you run a service business with steady inbound demand and you feel like you should be converting more of it — yes. The specific industry matters less than the operational situation.",
       },
       {
         q: "Do I need to be technical?",
-        a: "No. The goal is to make AI practical and accessible — not to layer on technical complexity. If you can use email and basic business software, you can work with the systems we build.",
+        a: "No. The goal is to fix the systems that handle follow-up, communication, and conversion — not to layer on technical complexity. If you can use email and basic business software, you can work with what we build.",
       },
       {
         q: "What if this is not the real problem?",
-        a: "That is one of the things we figure out in the Intensive. If the underlying issue is something different, we will tell you — and explain why.",
+        a: "That is one of the things the Revenue Leak Exposure uncovers. If the underlying issue is something different, we will tell you — and explain why.",
       },
       {
         q: "Will this add more complexity?",
-        a: "That is the right instinct. We do not recommend tools for the sake of it. The goal is to simplify operations, not to add another dashboard to manage.",
-      },
-      {
-        q: "What if systems fail or break?",
-        a: "We account for that in how we design systems. Everything is built with human review in mind — especially early on. We do not recommend full automation in high-stakes areas without appropriate checkpoints.",
+        a: "That is the right instinct. We do not recommend tools for the sake of it. The goal is to improve conversion from existing demand, not to add another dashboard to manage.",
       },
       {
         q: "Will this replace my team?",
-        a: "No. The focus is on reducing repetitive, low-value work so your team can spend time on higher-value tasks. Infrastructure is meant to help your team, not replace it.",
+        a: "No. The focus is on removing inconsistency, slow follow-up, and owner dependency — so your team can focus on higher-value work. Systems are meant to support the team, not replace it.",
       },
       {
-        q: "Will my team resist it?",
-        a: "Sometimes. That is why we think about adoption from the start. We recommend beginning with simple, low-friction wins that help the team before pushing anything complex or disruptive.",
+        q: "How long before I see results?",
+        a: "Most clients see early clarity within the first week and measurable momentum within 30 days. More meaningful improvement typically shows between 30 and 90 days depending on access, responsiveness, and implementation speed.",
       },
       {
-        q: "Will this disrupt operations?",
-        a: "Not if we approach it correctly. Stability comes first. We prioritize changes that fit into how the business already works before introducing anything that requires significant adjustment.",
+        q: "What does Revenue Leak Exposure include?",
+        a: "A focused diagnostic covering inquiry-to-conversion flow, follow-up breakdown, communication gaps, missed opportunity mapping, and prioritized recovery actions — starting at $197.",
+      },
+      {
+        q: "What happens after the diagnostic?",
+        a: "You leave with a clear picture of where revenue is leaking and what to fix first. If you move forward into implementation, your diagnostic fee is credited toward the build.",
       },
       {
         q: "Do I need ongoing support?",
-        a: "No. Most clients start with the Intensive and decide later if ongoing advisory makes sense. There is no pressure to commit to anything beyond the first step.",
+        a: "No. Most clients start with the Revenue Leak Exposure and decide from there. There is no pressure to commit to anything beyond the diagnostic.",
       },
       {
-        q: "What happens after I start?",
-        a: "After applying, you will receive a short intake form to help me understand your business before we meet. From there, we schedule your 90-minute session and get to work.",
+        q: "What if I am not ready to start yet?",
+        a: "Book a call. We can talk through what you are seeing in your business and whether this is the right fit before any commitment.",
       },
     ],
   },
 
-  // ── Revenue Leak Audit (Bridge Offer) ────────────────────────────────────
-  bottleneckAudit: {
-    eyebrow:  "Not Ready for the Full Intensive?",
-    headline: "Start With the Revenue Leak Audit",
+  // ── Revenue Leak Exposure (Entry Offer) ───────────────────────────────────
+  revenueLeakExposure: {
+    eyebrow:   "Start Here",
+    headline:  "Start With Revenue Leak Exposure",
     body:
-      "Pick one area where money is leaking. I review it, identify the fix, and hand you a clear action plan.",
-    badge:    "Focused First Step",
-    price:    "$97",
+      "A focused diagnostic built to show you where jobs, appointments, consults, and clients are being lost before you spend more on traffic, ads, tools, or guesswork.",
+    badge:     "Entry Offer",
+    price:     "$197",
     deliverables: [
-      "One workflow, follow-up gap, or revenue leak reviewed",
-      "Three priority fixes",
-      "Short action plan or Loom walkthrough",
-      "Clear next-step recommendation",
+      "Inquiry-to-conversion breakdown review",
+      "Follow-up breakdown analysis",
+      "Communication gap findings",
+      "Missed opportunity mapping",
+      "Prioritized recovery actions",
     ],
     creditLine:
-      "If you move forward with the Intensive, this is credited.",
-    cta: { label: "Start the $97 Revenue Leak Audit", href: "/audit" },
+      "If you move forward into implementation, your diagnostic is credited toward the build.",
+    guarantee: {
+      headline: "Conditional Momentum Guarantee",
+      body:
+        "If you provide timely access, approvals, and participation, the highest-value recovery opportunities will be addressed and the work will continue until measurable momentum is created.",
+    },
+    cta: { label: "Start the Diagnostic", href: "/audit" },
   },
 
   // ── Final CTA ─────────────────────────────────────────────────────────────
   finalCTA: {
     headline:
-      "If You Know Revenue Is Slipping Through the Cracks, Start Here",
-    body:
-      "We help businesses recover what they are already losing — by fixing client flow, follow-up, and operational infrastructure.",
-    cta:       { label: "Book a Discovery Call", href: BOOKING_URL },
-    trustLine: "Practical guidance. Clear priorities. No noise.",
+      "If demand already exists but too much of it dies before it turns into revenue, start here.",
+    body:     "",
+    cta:       { label: "Book Your Revenue Leak Exposure", href: "/audit" },
+    trustLine: "Diagnosis before prescription. Revenue before noise.",
   },
 
   // ── Contact Form (secondary fallback) ─────────────────────────────────────
@@ -399,15 +345,14 @@ export const siteContent = {
     headline: "Prefer to Reach Out First?",
     body:     "Send a message and I will follow up within one business day.",
     submitLabel: "Send a Message",
-    // TODO: Replace '#' with your form handler endpoint (Formspree, Resend, etc.)
     formAction: "#",
   },
 
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
     brand:   "Jimmy Long",
-    tagline: "The Silent Infrastructure",
-    flavor:  "I Speak Fluent Latency",
+    tagline: "Revenue Recovery Systems",
+    flavor:  "Diagnosis before prescription.",
     email:   "jimmy@jimmy-long.com",
     phone:   null as string | null,
     social: [

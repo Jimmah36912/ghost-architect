@@ -1,17 +1,14 @@
 import Nav from "@/components/Nav"
 import HeroSection from "@/components/HeroSection"
-import AudienceFitSection from "@/components/AudienceFitSection"
 import PainPointsSection from "@/components/PainPointsSection"
 import TriedAlreadySection from "@/components/TriedAlreadySection"
-import AuditNudge from "@/components/AuditNudge"
 import WhyDifferentSection from "@/components/WhyDifferentSection"
 import CapabilitiesSection from "@/components/CapabilitiesSection"
-import BeforeAfterSection from "@/components/BeforeAfterSection"
 import ProcessSection from "@/components/ProcessSection"
-import StrategyIntensiveSection from "@/components/StrategyIntensiveSection"
-import WhyStartHereSection from "@/components/WhyStartHereSection"
-import MonthlyAdvisorySection from "@/components/MonthlyAdvisorySection"
+import BeforeAfterSection from "@/components/BeforeAfterSection"
+import AudienceFitSection from "@/components/AudienceFitSection"
 import TrustSection from "@/components/TrustSection"
+import WaysToWorkSection from "@/components/WaysToWorkSection"
 import FAQSection from "@/components/FAQSection"
 import BottleneckAuditSection from "@/components/BottleneckAuditSection"
 import FinalCTASection from "@/components/FinalCTASection"
@@ -23,55 +20,46 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        {/* 1. Hero — dark, full-height */}
+        {/* 1. Hero */}
         <HeroSection variant="splitImage" />
 
-        {/* 2. Who This Is For */}
-        <AudienceFitSection />
+        {/* 2. Market Reframe — you don't have a lead problem first */}
+        <PainPointsSection />
 
-        {/* 3. What's Breaking Down */}
-        <PainPointsSection cardVariant="outlined" />
-
-        {/* 4. What You've Tried */}
+        {/* 3. Why typical solutions underperform — 3-column comparison */}
         <TriedAlreadySection />
 
-        {/* 4.5. Revenue Leak Audit nudge — low-commitment bridge after problem framing */}
-        <AuditNudge />
-
-        {/* 5. Why AI Advice Misses */}
+        {/* 4. Purple Ocean positioning */}
         <WhyDifferentSection />
 
-        {/* 6. What We Help With + mid CTA */}
-        <CapabilitiesSection cardVariant="default" />
+        {/* 5. Revenue Recovery Sequencing™ mechanism */}
+        <CapabilitiesSection />
 
-        {/* 7. Before / After — dark */}
-        <BeforeAfterSection />
-
-        {/* 8. Process */}
+        {/* 6. How It Works — 4-step process + timeline */}
         <ProcessSection />
 
-        {/* 9. Strategy Intensive — primary offer */}
-        <StrategyIntensiveSection />
+        {/* 7. Before / After */}
+        <BeforeAfterSection />
 
-        {/* 10. Why Start Here */}
-        <WhyStartHereSection />
+        {/* 8. Who This Is For */}
+        <AudienceFitSection />
 
-        {/* 11. Monthly Advisory — secondary offer */}
-        <MonthlyAdvisorySection />
-
-        {/* 12. Trust — dark */}
+        {/* 9. Why Choose Jimmy Long — 5 reasons */}
         <TrustSection />
 
-        {/* 13. FAQ */}
+        {/* 10. Ways to Work Together — 3-offer section */}
+        <WaysToWorkSection />
+
+        {/* 11. FAQ */}
         <FAQSection />
 
-        {/* 14. Bottleneck Audit — bridge offer */}
+        {/* 12. Revenue Leak Exposure — $197 entry offer */}
         <BottleneckAuditSection />
 
-        {/* 15. Final CTA — dark */}
+        {/* 13. Final CTA */}
         <FinalCTASection />
 
-        {/* 15. Contact form (secondary fallback) */}
+        {/* 14. Contact form (secondary fallback) */}
         <ContactFormSection />
       </main>
       <Footer />

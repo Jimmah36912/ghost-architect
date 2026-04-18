@@ -3,7 +3,7 @@ import { CTAButton } from "./ui/CTAButton"
 import { siteContent } from "@/data/content"
 
 export default function BottleneckAuditSection() {
-  const { bottleneckAudit } = siteContent
+  const { revenueLeakExposure } = siteContent
 
   return (
     <SectionWrapper tone="light" id="audit">
@@ -12,20 +12,20 @@ export default function BottleneckAuditSection() {
         {/* Header */}
         <div className="text-center mb-8">
           <p className="text-xs font-bold uppercase tracking-widest text-ga-text-muted mb-3">
-            {bottleneckAudit.eyebrow}
+            {revenueLeakExposure.eyebrow}
           </p>
           <h2
             className="font-bold text-ga-text mb-4"
             style={{ fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)" }}
           >
-            {bottleneckAudit.headline}
+            {revenueLeakExposure.headline}
           </h2>
           <p className="text-ga-text-muted leading-relaxed">
-            {bottleneckAudit.body}
+            {revenueLeakExposure.body}
           </p>
         </div>
 
-        {/* Offer card — secondary style, matching Monthly Advisory weight */}
+        {/* Offer card */}
         <div
           className="p-8 rounded-2xl"
           style={{
@@ -38,14 +38,14 @@ export default function BottleneckAuditSection() {
             <span
               className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide"
               style={{
-                backgroundColor: "var(--ga-accent-light)",
-                color: "var(--ga-accent)",
+                backgroundColor: "rgba(49,91,76,0.20)",
+                color: "var(--ga-accent-light)",
               }}
             >
-              {bottleneckAudit.badge}
+              {revenueLeakExposure.badge}
             </span>
             <span className="text-2xl font-bold text-ga-text">
-              {bottleneckAudit.price}
+              {revenueLeakExposure.price}
             </span>
           </div>
 
@@ -61,7 +61,7 @@ export default function BottleneckAuditSection() {
             What is included
           </p>
           <ul className="space-y-3 mb-6">
-            {bottleneckAudit.deliverables.map((item) => (
+            {revenueLeakExposure.deliverables.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span
                   className="flex-shrink-0 mt-0.5"
@@ -83,21 +83,40 @@ export default function BottleneckAuditSection() {
             ))}
           </ul>
 
-          {/* Credit-forward line */}
+          {/* Credit line */}
           <p
-            className="text-sm leading-relaxed italic mb-8"
+            className="text-sm leading-relaxed italic mb-6"
             style={{ color: "var(--ga-accent)" }}
           >
-            {bottleneckAudit.creditLine}
+            {revenueLeakExposure.creditLine}
           </p>
+
+          {/* Guarantee */}
+          <div
+            className="rounded-xl p-4 mb-8"
+            style={{
+              backgroundColor: "rgba(49,91,76,0.08)",
+              border: "1px solid rgba(49,91,76,0.20)",
+            }}
+          >
+            <p
+              className="text-xs font-bold uppercase tracking-widest mb-2"
+              style={{ color: "var(--ga-accent-light)" }}
+            >
+              {revenueLeakExposure.guarantee.headline}
+            </p>
+            <p className="text-sm leading-relaxed text-ga-text-muted">
+              {revenueLeakExposure.guarantee.body}
+            </p>
+          </div>
 
           {/* CTA */}
           <div className="flex justify-center">
             <CTAButton
-              label={bottleneckAudit.cta.label}
-              href={bottleneckAudit.cta.href}
-              variant="secondary"
-              size="md"
+              label={revenueLeakExposure.cta.label}
+              href={revenueLeakExposure.cta.href}
+              variant="primary"
+              size="lg"
             />
           </div>
         </div>

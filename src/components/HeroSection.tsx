@@ -82,17 +82,19 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
               />
             </div>
 
-            {/* Audit nudge */}
-            <p className="text-sm mb-8" style={{ color: "rgba(148,163,184,0.65)" }}>
-              Not ready for the full session?{" "}
-              <a
-                href="/audit"
-                className="underline underline-offset-2 transition-opacity hover:opacity-80"
-                style={{ color: "rgba(245,158,11,0.90)" }}
-              >
-                Start with the $97 Revenue Leak Audit
-              </a>
-            </p>
+            {/* Bullets */}
+            <ul className="space-y-2 mb-8">
+              {hero.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-center gap-2.5 text-sm" style={{ color: "rgba(215,210,195,0.75)" }}>
+                  <span style={{ color: "var(--ga-accent-light)" }} aria-hidden>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7l3 3L12 3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
 
             {/* Support microcopy */}
             <p className="text-sm tracking-wide" style={{ color: "rgba(148,163,184,0.7)" }}>
@@ -110,10 +112,10 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                   className="absolute -top-5 left-0 right-0 flex items-center gap-2"
                   aria-hidden
                 >
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(31,111,120,0.25)" }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(49,91,76,0.25)" }} />
                   <span
                     className="text-[10px] tracking-widest uppercase"
-                    style={{ color: "rgba(31,111,120,0.45)", fontFamily: "monospace" }}
+                    style={{ color: "rgba(49,91,76,0.45)", fontFamily: "monospace" }}
                   >
                     founder
                   </span>
@@ -135,7 +137,7 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                     className="absolute inset-0 z-10 pointer-events-none"
                     style={{
                       background:
-                        "linear-gradient(160deg, rgba(31,111,120,0.15) 0%, transparent 50%)",
+                        "linear-gradient(160deg, rgba(49,91,76,0.15) 0%, transparent 50%)",
                     }}
                     aria-hidden
                   />
@@ -169,11 +171,11 @@ export default function HeroSection({ variant = "splitImage" }: HeroSectionProps
                 >
                   <span
                     className="text-[10px] tracking-widest uppercase"
-                    style={{ color: "rgba(31,111,120,0.45)", fontFamily: "monospace" }}
+                    style={{ color: "rgba(49,91,76,0.45)", fontFamily: "monospace" }}
                   >
                     ghost architect
                   </span>
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(31,111,120,0.25)" }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(49,91,76,0.25)" }} />
                 </div>
               </div>
             </div>
