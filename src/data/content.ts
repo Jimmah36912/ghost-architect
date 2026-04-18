@@ -53,6 +53,33 @@ export const siteContent = {
       "Most service businesses assume the answer is more traffic, more ads, more SEO, or another new tool. But if calls are missed, follow-up is inconsistent, estimates go cold, consult requests stall, and communication changes depending on who responds, more demand usually just creates more waste.",
     emphasis:
       "That is why the real problem is often not lead generation first. It is revenue leakage after interest already exists.",
+    problemCards: [
+      {
+        icon:  "follow-up" as const,
+        title: "Missed Follow-Up",
+        body:  "Interested inquiries go cold because nobody follows up with structure or speed.",
+      },
+      {
+        icon:  "estimates" as const,
+        title: "Cold Estimates",
+        body:  "Estimates get sent, then go quiet until the revenue disappears.",
+      },
+      {
+        icon:  "response" as const,
+        title: "Response Delays",
+        body:  "Slow response kills urgency and sends prospects to whoever replies first.",
+      },
+      {
+        icon:  "bottleneck" as const,
+        title: "Owner Bottlenecks",
+        body:  "Too much still depends on the owner, so opportunities stall when they get busy.",
+      },
+      {
+        icon:  "communication" as const,
+        title: "Inconsistent Communication",
+        body:  "Different people handle inquiries differently, creating trust gaps that cost booked work.",
+      },
+    ],
   },
 
   // ── Why Typical Solutions Underperform ───────────────────────────────────
@@ -141,6 +168,12 @@ export const siteContent = {
       },
       {
         number: "04",
+        title:  "Recovery Stabilization",
+        body:
+          "A structured checkpoint to verify recovered revenue is holding, close any remaining gaps, and confirm the system is running without owner dependency.",
+      },
+      {
+        number: "05",
         title:  "Revenue Control & Expansion",
         body:
           "Ongoing refinement that protects recovered revenue, tightens execution, and strengthens the business before further scale.",

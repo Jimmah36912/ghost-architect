@@ -1,188 +1,298 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 import { SectionWrapper } from "./ui/SectionWrapper"
 import { SectionHeading } from "./ui/SectionHeading"
 import { siteContent } from "@/data/content"
 
-// Resting colors for each step index
-const RESTING_COLOR = (i: number) =>
-  i === 0 ? "rgba(49,91,76,0.55)" : "rgba(49,91,76,0.28)"
+// ── Timing ────────────────────────────────────────────────────────────────────
+const DWELL_MS   = 1800   // how long each step holds active
+const TRANS_MS   = 320    // cross-fade duration for content panel
+const GAP_MS     = 80     // pause between steps
 
-const RESTING_COLOR_MOBILE = (i: number) =>
-  i === 0 ? "rgba(49,91,76,0.60)" : "rgba(49,91,76,0.30)"
+// ── Colors ────────────────────────────────────────────────────────────────────
+const C_INACTIVE  = "var(--ga-border)"
+const C_COMPLETE  = "var(--ga-accent-light)"   // deep evergreen
+const C_ACTIVE    = "var(--ga-accent)"          // burnished copper
 
-// Lit state values
-const LIT_COLOR      = "var(--ga-accent)"
-const LIT_SHADOW     = "0 0 32px rgba(185,106,46,0.30), 0 0 64px rgba(185,106,46,0.12)"
-const RESTING_SHADOW = "0 0 0px rgba(185,106,46,0), 0 0 0px rgba(185,106,46,0)"
+// ── Rail ──────────────────────────────────────────────────────────────────────
+function RailDesktop({
+  steps,
+  activeStep,
+}: {
+  steps: typeof siteContent.process.steps
+  activeStep: number
+}) {
+  const count = steps.length
 
-// Sequence timing (ms)
-const GLOW_DURATION = 650
-const STEP_GAP      = 700
+  return (
+    <div className="relative flex items-center justify-between" style={{ padding: "0 2rem" }}>
+      {/* Connector track */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2"
+        style={{
+          left:    "2rem",
+          right:   "2rem",
+          height:  "1px",
+          backgroundColor: C_INACTIVE,
+        }}
+        aria-hidden
+      />
 
+      {/* Fill overlay — scales from left */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2"
+        style={{
+          left:       "2rem",
+          right:      "2rem",
+          height:     "1px",
+          backgroundColor: C_COMPLETE,
+          transformOrigin: "left center",
+          transform:  `scaleX(${activeStep / (count - 1)})`,
+          transition: `transform ${TRANS_MS}ms ease`,
+        }}
+        aria-hidden
+      />
+
+      {/* Nodes */}
+      {steps.map((step, i) => {
+        const isDone   = i < activeStep
+        const isActive = i === activeStep
+        return (
+          <div key={step.number} className="relative z-10 flex flex-col items-center gap-3">
+            {/* Step number above */}
+            <span
+              className="text-xs font-bold tracking-widest uppercase"
+              style={{
+                color: isActive ? C_ACTIVE : isDone ? C_COMPLETE : "var(--ga-text-muted)",
+                opacity: isDone || isActive ? 1 : 0.45,
+                transition: `color ${TRANS_MS}ms ease, opacity ${TRANS_MS}ms ease`,
+              }}
+            >
+              {step.number}
+            </span>
+
+            {/* Node dot */}
+            <div
+              style={{
+                width:           isActive ? "1rem" : "0.625rem",
+                height:          isActive ? "1rem" : "0.625rem",
+                borderRadius:    "50%",
+                backgroundColor: isActive ? C_ACTIVE : isDone ? C_COMPLETE : "transparent",
+                border:          isActive ? `2px solid ${C_ACTIVE}` : isDone ? `2px solid ${C_COMPLETE}` : `1.5px solid var(--ga-text-muted)`,
+                boxShadow:       isActive ? `0 0 0 4px rgba(185,106,46,0.18)` : "none",
+                transition:      `all ${TRANS_MS}ms ease`,
+              }}
+              aria-hidden
+            />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+// ── Content Panel ─────────────────────────────────────────────────────────────
+function ContentPanel({
+  step,
+  visible,
+}: {
+  step: typeof siteContent.process.steps[number]
+  visible: boolean
+}) {
+  return (
+    <div
+      style={{
+        opacity:    visible ? 1 : 0,
+        transform:  visible ? "translateY(0)" : "translateY(6px)",
+        transition: `opacity ${TRANS_MS}ms ease, transform ${TRANS_MS}ms ease`,
+        minHeight:  "5rem",
+      }}
+    >
+      <h3
+        className="font-semibold text-lg leading-snug mb-2"
+        style={{ color: "var(--ga-text)" }}
+      >
+        {step.title}
+      </h3>
+      <p className="text-sm leading-relaxed" style={{ color: "var(--ga-text-muted)" }}>
+        {step.body}
+      </p>
+    </div>
+  )
+}
+
+// ── Section ───────────────────────────────────────────────────────────────────
 export default function ProcessSection() {
   const { process } = siteContent
-  const contentRef = useRef<HTMLDivElement>(null)
-  const timersRef  = useRef<ReturnType<typeof setTimeout>[]>([])
-  const [litStep, setLitStep] = useState<number | null>(null)
+  const sectionRef  = useRef<HTMLDivElement>(null)
+  const timersRef   = useRef<ReturnType<typeof setTimeout>[]>([])
+
+  const [activeStep,    setActiveStep]    = useState(0)
+  const [panelVisible,  setPanelVisible]  = useState(true)
+  const [displayedStep, setDisplayedStep] = useState(0)
+  const [hasStarted,    setHasStarted]    = useState(false)
+
+  const count = process.steps.length
+
+  const clearTimers = useCallback(() => {
+    timersRef.current.forEach(clearTimeout)
+    timersRef.current = []
+  }, [])
+
+  // Cross-fade to a new step
+  const transitionTo = useCallback((index: number) => {
+    setPanelVisible(false)
+    const t = setTimeout(() => {
+      setDisplayedStep(index)
+      setActiveStep(index)
+      setPanelVisible(true)
+    }, TRANS_MS)
+    timersRef.current.push(t)
+  }, [])
+
+  const runSequence = useCallback(() => {
+    clearTimers()
+    setActiveStep(0)
+    setDisplayedStep(0)
+    setPanelVisible(true)
+    setHasStarted(true)
+
+    for (let i = 1; i < count; i++) {
+      const t = setTimeout(() => transitionTo(i), i * (DWELL_MS + GAP_MS))
+      timersRef.current.push(t)
+    }
+  }, [count, clearTimers, transitionTo])
 
   useEffect(() => {
-    const el = contentRef.current
+    const el = sectionRef.current
     if (!el) return
 
-    const clearTimers = () => {
-      timersRef.current.forEach(clearTimeout)
-      timersRef.current = []
-    }
-
-    const runSequence = () => {
-      clearTimers()
-      const count = process.steps.length
-      for (let i = 0; i < count; i++) {
-        const onTimer  = setTimeout(() => setLitStep(i),    i * STEP_GAP)
-        const offTimer = setTimeout(() => setLitStep(null), i * STEP_GAP + GLOW_DURATION)
-        timersRef.current.push(onTimer, offTimer)
-      }
-    }
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            runSequence()
-          } else {
-            clearTimers()
-            setLitStep(null)
-          }
-        })
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          runSequence()
+        }
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     )
-
     observer.observe(el)
-
     return () => {
       observer.disconnect()
       clearTimers()
     }
-  }, [process.steps.length])
-
-  const numeralStyle = (i: number, mobile = false): React.CSSProperties => {
-    const isLit = litStep === i
-    return {
-      fontSize:    mobile ? "2.25rem" : "4.5rem",
-      lineHeight:  1,
-      color:       isLit ? LIT_COLOR : (mobile ? RESTING_COLOR_MOBILE(i) : RESTING_COLOR(i)),
-      textShadow:  isLit ? LIT_SHADOW : RESTING_SHADOW,
-      letterSpacing: "-0.02em",
-    }
-  }
+  }, [hasStarted, runSequence, clearTimers])
 
   const { timeline } = process
 
   return (
     <SectionWrapper tone="white" id="process">
-      <div ref={contentRef}>
+      <div ref={sectionRef}>
         <SectionHeading headline={process.headline} align="center" />
 
-        {/* Desktop: four-column blueprint layout */}
+        {/* ── Desktop Rail ── */}
         <div className="hidden md:block mt-16">
-          {/* Row 1: Ghost numerals */}
-          <div className="grid grid-cols-4 gap-8 mb-2">
-            {process.steps.map((step, i) => (
-              <div key={step.number} className="flex justify-center">
-                <span
-                  className="font-bold select-none process-numeral"
-                  style={numeralStyle(i)}
-                  aria-hidden
-                >
-                  {step.number}
-                </span>
-              </div>
-            ))}
+          <RailDesktop steps={process.steps} activeStep={activeStep} />
+
+          {/* Content panel */}
+          <div
+            className="mt-10 mx-auto max-w-xl text-center"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <ContentPanel step={process.steps[displayedStep]} visible={panelVisible} />
           </div>
 
-          {/* Row 2: Dashed connector line + dots */}
-          <div className="relative grid grid-cols-4 gap-8 my-3">
-            <div
-              className="absolute top-1/2 left-[12%] right-[12%] -translate-y-1/2 h-px"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(to right, var(--ga-border) 0, var(--ga-border) 6px, transparent 6px, transparent 14px)",
-              }}
-              aria-hidden
-            />
+          {/* Step titles row — always visible, muted unless active */}
+          <div
+            className="grid gap-4 mt-8"
+            style={{ gridTemplateColumns: `repeat(${count}, 1fr)` }}
+          >
             {process.steps.map((step, i) => (
-              <div key={step.number} className="flex justify-center relative z-10">
-                <div
-                  className="w-3 h-3 rounded-full"
-                  style={{
-                    backgroundColor: i === 0 ? "var(--ga-accent)" : "var(--ga-border)",
-                    boxShadow:       i === 0 ? "0 0 0 4px rgba(49,91,76,0.20)" : "none",
-                  }}
-                  aria-hidden
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Row 3: Title + body */}
-          <div className="grid grid-cols-4 gap-8 mt-5">
-            {process.steps.map((step, i) => (
-              <div key={step.number} className="text-center">
-                <h3
-                  className="font-semibold mb-2 text-base leading-snug"
-                  style={{ color: i === 0 ? "var(--ga-accent)" : "var(--ga-text)" }}
-                >
-                  {step.title}
-                </h3>
-                <p className="text-ga-text-muted text-sm leading-relaxed">{step.body}</p>
-              </div>
+              <button
+                key={step.number}
+                onClick={() => { clearTimers(); transitionTo(i) }}
+                className="text-center text-xs font-medium leading-snug transition-colors duration-200 cursor-pointer bg-transparent border-0 p-0"
+                style={{
+                  color:   i === activeStep ? "var(--ga-accent)" : i < activeStep ? C_COMPLETE : "var(--ga-text-muted)",
+                  opacity: i === activeStep ? 1 : i < activeStep ? 0.8 : 0.4,
+                }}
+              >
+                {step.title}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Mobile: vertical stack */}
+        {/* ── Mobile: vertical stack ── */}
         <div className="md:hidden mt-10 space-y-0">
-          {process.steps.map((step, i) => (
-            <div key={step.number} className="flex gap-6">
-              <div className="flex flex-col items-center" style={{ minWidth: "3rem" }}>
-                <span
-                  className="font-bold leading-none select-none process-numeral"
-                  style={numeralStyle(i, true)}
-                  aria-hidden
-                >
-                  {step.number}
-                </span>
-                {i < process.steps.length - 1 && (
+          {process.steps.map((step, i) => {
+            const isDone   = i < activeStep
+            const isActive = i === activeStep
+            return (
+              <div key={step.number} className="flex gap-5">
+                {/* Left column: node + connector */}
+                <div className="flex flex-col items-center" style={{ minWidth: "2.5rem" }}>
                   <div
-                    className="flex-1 my-2"
                     style={{
-                      width: "1px",
-                      backgroundImage:
-                        "repeating-linear-gradient(to bottom, var(--ga-border) 0, var(--ga-border) 6px, transparent 6px, transparent 14px)",
-                      minHeight: "2rem",
+                      width:           isActive ? "0.875rem" : "0.625rem",
+                      height:          isActive ? "0.875rem" : "0.625rem",
+                      borderRadius:    "50%",
+                      marginTop:       "0.25rem",
+                      flexShrink:      0,
+                      backgroundColor: isActive ? C_ACTIVE : isDone ? C_COMPLETE : "transparent",
+                      border:          isActive ? `2px solid ${C_ACTIVE}` : isDone ? `2px solid ${C_COMPLETE}` : `1.5px solid var(--ga-text-muted)`,
+                      boxShadow:       isActive ? `0 0 0 4px rgba(185,106,46,0.18)` : "none",
+                      transition:      `all ${TRANS_MS}ms ease`,
                     }}
                     aria-hidden
                   />
-                )}
+                  {i < count - 1 && (
+                    <div
+                      className="flex-1 my-1.5"
+                      style={{
+                        width:           "1px",
+                        backgroundColor: isDone ? C_COMPLETE : C_INACTIVE,
+                        minHeight:       "2rem",
+                        transition:      `background-color ${TRANS_MS}ms ease`,
+                      }}
+                      aria-hidden
+                    />
+                  )}
+                </div>
+
+                {/* Right column: step content */}
+                <div className="pb-8 pt-0">
+                  <span
+                    className="text-xs font-bold tracking-widest uppercase block mb-1"
+                    style={{
+                      color:   isActive ? C_ACTIVE : isDone ? C_COMPLETE : "var(--ga-text-muted)",
+                      opacity: isDone || isActive ? 1 : 0.5,
+                      transition: `color ${TRANS_MS}ms ease`,
+                    }}
+                  >
+                    {step.number}
+                  </span>
+                  <h3
+                    className="font-semibold mb-1.5 text-sm"
+                    style={{
+                      color:   isActive ? "var(--ga-text)" : "var(--ga-text-muted)",
+                      transition: `color ${TRANS_MS}ms ease`,
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--ga-text-muted)", opacity: isActive || isDone ? 1 : 0.6 }}>
+                    {step.body}
+                  </p>
+                </div>
               </div>
-              <div className="pb-8 pt-1">
-                <h3
-                  className="font-semibold mb-2"
-                  style={{ color: i === 0 ? "var(--ga-accent)" : "var(--ga-text)" }}
-                >
-                  {step.title}
-                </h3>
-                <p className="text-ga-text-muted text-sm leading-relaxed">{step.body}</p>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
-      {/* Timeline */}
+      {/* ── Timeline ── */}
       <div className="mt-16 pt-12" style={{ borderTop: "1px solid var(--ga-border)" }}>
         <h3
           className="font-semibold text-center mb-8 text-lg"
@@ -197,7 +307,7 @@ export default function ProcessSection() {
               className="rounded-xl p-5"
               style={{
                 backgroundColor: "var(--ga-surface)",
-                border: "1px solid var(--ga-border)",
+                border:          "1px solid var(--ga-border)",
               }}
             >
               <p
