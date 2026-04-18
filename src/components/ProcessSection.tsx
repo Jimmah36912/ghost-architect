@@ -131,7 +131,7 @@ export default function ProcessSection() {
   const [activeStep,    setActiveStep]    = useState(0)
   const [panelVisible,  setPanelVisible]  = useState(true)
   const [displayedStep, setDisplayedStep] = useState(0)
-  const [hasStarted,    setHasStarted]    = useState(false)
+  const hasStartedRef = useRef(false)
 
   const count = process.steps.length
 
@@ -156,7 +156,6 @@ export default function ProcessSection() {
     setActiveStep(0)
     setDisplayedStep(0)
     setPanelVisible(true)
-    setHasStarted(true)
 
     for (let i = 1; i < count; i++) {
       const t = setTimeout(() => transitionTo(i), i * (DWELL_MS + GAP_MS))
@@ -170,18 +169,16 @@ export default function ProcessSection() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
+        if (entry.isIntersecting && !hasStartedRef.current) {
+          hasStartedRef.current = true
           runSequence()
         }
       },
       { threshold: 0.2 }
     )
     observer.observe(el)
-    return () => {
-      observer.disconnect()
-      clearTimers()
-    }
-  }, [hasStarted, runSequence, clearTimers])
+    return () => observer.disconnect()
+  }, [runSequence])
 
   const { timeline } = process
 
