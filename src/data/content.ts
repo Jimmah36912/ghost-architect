@@ -392,8 +392,18 @@ export const siteContent = {
     social: [
       {
         label: "Facebook",
-        href:  "https://www.facebook.com/james.long.602375",
+        href:  "https://www.facebook.com/jimmy.long.396",
         icon:  "facebook" as const,
+      },
+      {
+        label: "Facebook Business",
+        href:  "https://www.facebook.com/profile.php?id=61572084012805",
+        icon:  "facebook" as const,
+      },
+      {
+        label: "Instagram",
+        href:  "https://www.instagram.com/jimmylongdigital/",
+        icon:  "instagram" as const,
       },
       {
         label: "LinkedIn",

@@ -17,8 +17,19 @@ function LinkedInIcon() {
   )
 }
 
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M12 7a5 5 0 100 10 5 5 0 000-10z" fill="black" />
+      <circle cx="17" cy="7" r="1" fill="black" />
+    </svg>
+  )
+}
+
 const socialIcons = {
   facebook: <FacebookIcon />,
+  instagram: <InstagramIcon />,
   linkedin: <LinkedInIcon />,
 }
 
